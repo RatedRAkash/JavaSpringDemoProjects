@@ -1,0 +1,41 @@
+# YAML Configuration for PRODUCTION
+info:
+    app:
+        description: Spring Boot Demo
+        name: Spring Boot Full Demo
+        version: 1.0.0
+    company:
+        name: RatedRAkash
+management:
+    endpoint:
+        health:
+            show-details: always
+    endpoints:
+        web:
+            exposure:
+                include: health,info,prometheus
+server:
+    error:
+        include-binding-errors: always
+        include-message: always
+        include-stacktrace: on_param
+spring:
+    datasource:
+        driverClassName: org.h2.Driver
+        password: ''
+        url: jdbc:h2:mem:testdb-dev-environment
+        username: akash
+    h2:
+        console:
+            enabled: true
+            path: /h2
+    jpa:
+        database-platform: org.hibernate.dialect.H2Dialect
+        hibernate:
+            ddl-auto: create-drop
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.PostgreSQLDialect
+                format_sql: true
+                show-sql: true
+        show-sql: true
