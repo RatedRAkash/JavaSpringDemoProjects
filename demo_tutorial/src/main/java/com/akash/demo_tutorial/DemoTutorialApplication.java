@@ -12,6 +12,11 @@ import javax.sql.DataSource;
 @Log
 public class DemoTutorialApplication {
 
+
+//	Persistance Layer(Repository)  ---> AuthorEntity ---> Service Layer(Services) ---> AuthorDto ---> Presentation Layer(Controllers) ---> will sent the AuthorDto as Json as Api Response
+
+//	AuthorEntity ---> ModelMapper ---> AuthorDto
+
 	private final DataSource dataSource;
 
 	public DemoTutorialApplication(final DataSource dataSource){
