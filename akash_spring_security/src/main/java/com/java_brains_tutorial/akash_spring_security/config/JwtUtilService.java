@@ -49,12 +49,14 @@ public class JwtUtilService {
                 .getBody();
     }
 
+//     eitar mane extractClaim er vitor jei FUNCTION pathabo taar Return Type ei hobe "T" mane ei Nicher Method er o Return Type
     private <T> T extractClaim(String token, Function<Claims, T> claimsResolver){
         final Claims claims = extractAllClaims(token);
         return claimsResolver.apply(claims);
     }
 
     public String extractUsername(String jwt_token) {
+    //        Claims::getSubject ---> String Type
         return extractClaim(jwt_token, Claims::getSubject);
     }
 
@@ -68,6 +70,7 @@ public class JwtUtilService {
     }
 
     private Date extractTokenExpiration(String token) {
+        //        Claims::getSubject ---> Date Type
         return extractClaim(token, Claims::getExpiration);
     }
 }
