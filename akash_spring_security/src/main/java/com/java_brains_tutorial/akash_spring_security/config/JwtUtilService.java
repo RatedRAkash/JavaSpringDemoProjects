@@ -17,7 +17,7 @@ import java.util.function.Function;
 @Service
 public class JwtUtilService {
 
-    private static final String SECRET_KEY = "Sergio Ramos";
+    private static final String SECRET_KEY = "7e0cb166d2a0d75a0a5d12773827a2c18dca6761f1fb4ebcbb15d78de2b56c3c";
 
     private Key getSignInKey() {
         byte[] keyBytes = Decoders.BASE64.decode(SECRET_KEY);
@@ -28,6 +28,7 @@ public class JwtUtilService {
         //  Empty New HashMap diye generateToken call dilam nicher Function ke
         return generateToken(new HashMap<>(), userDetails);
     }
+    
     public String generateToken(Map<String, Object> extractClaims, UserDetails userDetails)
     {
         return Jwts
@@ -36,7 +37,7 @@ public class JwtUtilService {
                 .setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis()+ 1000 * 60 * 24))
-                .signWith(getSignInKey(), SignatureAlgorithm.ES256)
+                .signWith(getSignInKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
 

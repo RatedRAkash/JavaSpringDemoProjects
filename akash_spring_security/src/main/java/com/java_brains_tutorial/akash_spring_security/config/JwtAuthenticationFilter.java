@@ -6,6 +6,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -23,7 +24,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private final JwtUtilService jwtUtilService;
 
 //    eita AutoWired hobe "ApplicationConfig" Class er "UserDetailsService" er @Bean theke
-    private UserDetailsService userDetailsService;
+    @Autowired
+    private final UserDetailsService userDetailsService;
 
 
     @Override
@@ -41,7 +43,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         userEmail = jwtUtilService.extractUsername(jwt);
 
         if(userEmail !=null && SecurityContextHolder.getContext().getAuthentication() == null){
-            UserDetails userDetails = this.userDetailsService.loadUserByUsername(userEmail);
+            UserDetails userDetails = userDetailsService.loadUserByUsername(userEmail);
             if(jwtUtilService.isTokenValid(jwt, userDetails)){
                 //  SecurityContextHolder update korte hole amader "UsernamePasswordAuthenticationToken" Object lagbe eijonno eita Create kora
                 UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
