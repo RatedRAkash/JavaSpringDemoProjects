@@ -1,8 +1,8 @@
 package Generics.MethodLevelGenericsExample.liquids;
 
-public class Juice implements Liquid{
+public class OrangeJuice extends Juice{
     @Override
     public void echo_liquid_name() {
-        System.out.println("Juice");
+        System.out.println("Orange Juice");
     }
 }
