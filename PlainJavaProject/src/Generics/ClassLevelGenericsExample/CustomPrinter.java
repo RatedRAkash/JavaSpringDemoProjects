@@ -1,4 +1,4 @@
-package Generics;
+package Generics.ClassLevelGenericsExample;
 
 public class CustomPrinter <T extends Animal>{
     T thingToPrint;

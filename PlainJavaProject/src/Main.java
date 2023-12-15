@@ -1,6 +1,3 @@
-import Generics.CustomPrinter;
-import Generics.Dog;
-import Generics.Lion;
 import MultiThread.CustomRunnable;
 import MultiThread.CustomThread;
 

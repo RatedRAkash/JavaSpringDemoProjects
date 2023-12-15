@@ -1,4 +1,4 @@
-package Generics.methodGenerics;
+package Generics.MethodLevelGenericsExample;
 
 public class Bartender {
 

@@ -1,7 +1,7 @@
-package Generics.methodGenerics;
+package Generics.MethodLevelGenericsExample;
 
-import Generics.methodGenerics.liquids.Juice;
-import Generics.methodGenerics.liquids.Water;
+import Generics.MethodLevelGenericsExample.liquids.Juice;
+import Generics.MethodLevelGenericsExample.liquids.Water;
 
 public class Main {
     public static void main(String[] args) {
