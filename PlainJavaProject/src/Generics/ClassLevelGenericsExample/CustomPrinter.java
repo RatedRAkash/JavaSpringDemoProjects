@@ -1,5 +1,7 @@
 package Generics.ClassLevelGenericsExample;
 
+import Generics.ClassLevelGenericsExample.animals.Animal;
+
 public class CustomPrinter <T extends Animal>{
     T thingToPrint;
 

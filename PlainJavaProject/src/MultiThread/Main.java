@@ -1,13 +1,7 @@
-import MultiThread.CustomRunnable;
-import MultiThread.CustomThread;
+package MultiThread;
 
 public class Main {
     public static void main(String[] args) {
-        CustomPrinter<Dog> d = new CustomPrinter<>(new Dog());
-        CustomPrinter<Lion> l = new CustomPrinter<>(new Lion());
-
-        d.printStatement();
-        l.printStatement();
 
         CustomThread thread1 = new CustomThread("Thread1");
         CustomThread thread2 = new CustomThread("Thread2");

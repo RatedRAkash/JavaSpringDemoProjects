@@ -1,4 +1,4 @@
-package Generics.ClassLevelGenericsExample;
+package Generics.ClassLevelGenericsExample.animals;
 
 public class Lion implements Animal {
     @Override
