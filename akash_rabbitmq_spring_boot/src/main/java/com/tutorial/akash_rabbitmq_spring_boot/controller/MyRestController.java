@@ -25,7 +25,7 @@ public class MyRestController {
         return ResponseEntity.ok("Normal Message sent to RabbitMQ ...");
     }
 
-    @GetMapping("/publish-student-obj")
+    @PostMapping("/publish-student-obj")
     public ResponseEntity<String> sendJsonMessage(@RequestBody Student student){
         jsonProducer.sendJsonMessageToMessageBroker(student);
         return ResponseEntity.ok("JsonMessage sent to RabbitMQ ...");
