@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration
+
+//TODO: @Configuration Off korsi, RabbitMQMultipleQueueConfig.class --> ei Class ee ON ase... Jekono 1 ta Config cholbe... tai eita OFF kora ase
+//@Configuration
 public class RabbiMQConfig {
 
 // TODO: *** Theory ***

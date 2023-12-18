@@ -10,10 +10,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class RabbitMQProducer {
+//    TODO: Producer Message Publish korar somoy QUEUE er name Lagge NAH, Message ta khali Exchange er moddhe Routing_Key diye BIND korlei Automatic Corresponding Queue te Push hoye jabe
     private static final Logger LOGGER = LoggerFactory.getLogger(RabbitMQProducer.class);
-
-    @Value("${rabbitmq.queue.name}")
-    private String queue_name;
 
     @Value("${rabbitmq.exchange.name}")
     private String exchange_name;
@@ -30,7 +28,7 @@ public class RabbitMQProducer {
     }
 
     public void sendMessageToMessageBroker(String message){
-        LOGGER.info(String.format("Message sent ---> %s", message));
+        LOGGER.info(String.format("Normal Message sent ---> %s", message));
 
         //routing_key Automatic jei Queue er sathe Bind ase shei Queue er kase Message niye jabe
         rabbitTemplate.convertAndSend(exchange_name, routing_key_name, message);
