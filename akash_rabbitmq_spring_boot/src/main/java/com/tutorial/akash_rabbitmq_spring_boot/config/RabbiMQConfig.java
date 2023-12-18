@@ -12,10 +12,13 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbiMQConfig {
 
-    // *** TODO: Theory ***
-    // Spring Boot or jekono Web Application RabbitMQ te jei Message pathai sheigula agge "EXCHANGE" er kase pathay, then Exchange "Routing_Key" er name dekhe "Binding_key(Queue er 1 tai Binding Key takhe, Queue key Unique vabe identify korar jonno)" er sathe milai and shei QUEUE ke forward kore dey
-    // ekta "Exchange" er under ee Multiple "Queue" Binding Key diye Bind takhte pare...
+// TODO: *** Theory ***
+    // Spring Boot or jekono Web Application RabbitMQ te jei Message pathai sheigula agge "EXCHANGE" er kase pathay, then Exchange "Routing_Key" er name dekhe QUEUE ke Forward kore
+    // ekta "Exchange" er under ee Multiple "Queue" er Individual Unique "Routing Key" diye Bind takhe...
     // kintu 1 ta Queue Ekadik(Many) "Exchange" er Under ee jaite parbe Nah...
+
+    // Routing Key diye kono Exchange bujhe kon Queue ke pathate hobe
+    // So, Routing Key is UNIQUE for a Exchange and Queue CONNECTION
 
 
 // TODO: Spring Boot nicher Class gular BEAN Auto Configure kore dey Internally... but "Normal Spring"(Not Spring Boot) eigula agge korto Nah
@@ -44,7 +47,7 @@ public class RabbiMQConfig {
     }
 
 
-    // binding between EXCHANGE and QUEUE using Routing Key
+    // binding between EXCHANGE and QUEUE using ROUTING_KEY
     @Bean
     public Binding binding(){
         return BindingBuilder
