@@ -1,6 +1,6 @@
 package com.tutorial.akash_rabbitmq_spring_boot.controller;
 
-import com.tutorial.akash_rabbitmq_spring_boot.dto.Student;
+import com.tutorial.akash_rabbitmq_spring_boot.dto.FootballPlayer;
 import com.tutorial.akash_rabbitmq_spring_boot.publisher.RabbitMQJsonProducer;
 import com.tutorial.akash_rabbitmq_spring_boot.publisher.RabbitMQProducer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +26,8 @@ public class MyRestController {
     }
 
     @PostMapping("/publish-student-obj")
-    public ResponseEntity<String> sendJsonMessage(@RequestBody Student student){
-        jsonProducer.sendJsonMessageToMessageBroker(student);
+    public ResponseEntity<String> sendJsonMessage(@RequestBody FootballPlayer footballPlayer){
+        jsonProducer.sendJsonMessageToMessageBroker(footballPlayer);
         return ResponseEntity.ok("JsonMessage sent to RabbitMQ ...");
     }
 }

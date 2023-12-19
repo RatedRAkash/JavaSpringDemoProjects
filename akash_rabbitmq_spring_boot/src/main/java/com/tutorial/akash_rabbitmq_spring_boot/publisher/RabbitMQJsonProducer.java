@@ -1,6 +1,6 @@
 package com.tutorial.akash_rabbitmq_spring_boot.publisher;
 
-import com.tutorial.akash_rabbitmq_spring_boot.dto.Student;
+import com.tutorial.akash_rabbitmq_spring_boot.dto.FootballPlayer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -29,10 +29,10 @@ public class RabbitMQJsonProducer {
         this.rabbitTemplate = rabbitTemplate;
     }
 
-    public void sendJsonMessageToMessageBroker(Student student){
-        LOGGER.info(String.format("JsonMessage sent ---> %s", student.toString()));
+    public void sendJsonMessageToMessageBroker(FootballPlayer footballPlayer){
+        LOGGER.info(String.format("JsonMessage sent ---> %s", footballPlayer.toString()));
 
         //Student Class Converted Json hobe & then Queue er kase push korbe
-        rabbitTemplate.convertAndSend(exchange_name, routing_key_name2, student);
+        rabbitTemplate.convertAndSend(exchange_name, routing_key_name2, footballPlayer);
     }
 }
