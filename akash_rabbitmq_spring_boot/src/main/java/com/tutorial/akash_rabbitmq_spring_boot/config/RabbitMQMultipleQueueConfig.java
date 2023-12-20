@@ -37,9 +37,17 @@ public class RabbitMQMultipleQueueConfig {
         return new Queue(queue_name);
     }
 
+    //  Topic-Type Exchange Create hobe
     @Bean
     public TopicExchange getExchange(){
         return new TopicExchange(exchange_name);
+    }
+
+
+    //  Direct-Type Exchange Create hobe
+    @Bean
+    public DirectExchange directExchange() {
+        return new DirectExchange("direct-exchange");
     }
 
     //  spring bean for rabbitmq Queue
