@@ -27,6 +27,9 @@ public class MyCustomProducer {
         }
     }
 
+    //TODO: orthat jei Type er message pathate chai tar "org.springframework.messaging.Message" Type Object Return korbo
+    //    String hole Message<String> return korbo
+    //    Integer hole Message<Integer> return korbo
     private static final <T> Message<T> message(T val) {
         return MessageBuilder.withPayload(val)
                 .build();
