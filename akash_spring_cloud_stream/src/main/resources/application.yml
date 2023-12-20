@@ -32,11 +32,24 @@ spring:
     stream:
       bindings:
         input:
-          destination: myTopic
+          destination: myTopic-exchange
           binder: local_rabbit
         output:
-          destination: myTopic
+          destination: myTopic-exchange
           binder: local_rabbit
+        input1:
+          destination: topic1-exchange
+          binder: local_rabbit
+        input2:
+          destination: topic2-exchange
+          binder: local_rabbit
+        output1:
+          destination: topic1-exchange
+          binder: local_rabbit
+        output2:
+          destination: topic2-exchange
+          binder: local_rabbit
+
       binders:
         local_rabbit:
           type: rabbit

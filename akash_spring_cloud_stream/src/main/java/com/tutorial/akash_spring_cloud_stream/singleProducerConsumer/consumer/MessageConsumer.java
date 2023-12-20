@@ -1,4 +1,4 @@
-package com.tutorial.akash_spring_cloud_stream.consumer;
+package com.tutorial.akash_spring_cloud_stream.singleProducerConsumer.consumer;
 
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.StreamListener;

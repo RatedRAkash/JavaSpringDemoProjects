@@ -1,9 +1,8 @@
-package com.tutorial.akash_spring_cloud_stream.controller;
+package com.tutorial.akash_spring_cloud_stream.singleProducerConsumer.controller;
 
-import com.tutorial.akash_spring_cloud_stream.producer.MessageProducer;
+import com.tutorial.akash_spring_cloud_stream.singleProducerConsumer.producer.MessageProducer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;

@@ -1,6 +1,4 @@
-package com.tutorial.akash_spring_cloud_stream.producer;
-
-import org.springframework.beans.factory.annotation.Autowired;
+package com.tutorial.akash_spring_cloud_stream.singleProducerConsumer.producer;
 
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.messaging.Source;

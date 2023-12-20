@@ -1,4 +1,4 @@
-package com.tutorial.akash_spring_cloud_stream.processor;
+package com.tutorial.akash_spring_cloud_stream.singleProducerConsumer.processor;
 
 import org.springframework.cloud.stream.annotation.Input;
 import org.springframework.cloud.stream.annotation.Output;

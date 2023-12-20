@@ -12,7 +12,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.tutorial.akash_spring_cloud_stream.model.LogMessage;
+import com.tutorial.akash_spring_cloud_stream.singleProducerConsumer.model.LogMessage;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)

@@ -1,5 +1,5 @@
-package com.tutorial.akash_spring_cloud_stream.converter;
-import com.tutorial.akash_spring_cloud_stream.model.LogMessage;
+package com.tutorial.akash_spring_cloud_stream.singleProducerConsumer.converter;
+import com.tutorial.akash_spring_cloud_stream.singleProducerConsumer.model.LogMessage;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.converter.AbstractMessageConverter;
 import org.springframework.util.MimeType;

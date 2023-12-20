@@ -1,4 +1,4 @@
-package com.tutorial.akash_spring_cloud_stream.model;
+package com.tutorial.akash_spring_cloud_stream.singleProducerConsumer.model;
 
 import java.io.Serializable;
 
