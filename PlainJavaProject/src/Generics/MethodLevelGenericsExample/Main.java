@@ -15,10 +15,13 @@ public class Main {
         Cocktail cocktail = bartender.<Juice, Water>mix(juice, water);
         Cocktail cocktailStatic = Bartender.<Juice, Water>mix2static(juice, water);
 
-        // This is Not Allowed... Wildcards (?) Try to Solve this issue
-//        Glass<Juice> juiceGlass = new Glass<OrangeJuice>();
+        //TODO: This is Not Allowed... Wildcards (?) Try to Solve this issue
+        // Glass<Juice> juiceGlass != new Glass<OrangeJuice>();
+        // instead we use Glass<?> as Method argument, so that any Glass<Juice>, Glass<Water>, Glass<OrangeJuice> etc.. can be passed when Calling the Method
 
-        // This is Allowed
+        // TODO: This is Allowed
         Glass<Juice> glass = new WineGlass<Juice>();
+
+        Cocktail cocktailStaticWildcard = Bartender.mix3static(new Glass<Juice>(new Juice()));
     }
 }
