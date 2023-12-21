@@ -13,7 +13,6 @@ public interface MyChannels {
     String OUTPUT_2 = "output2";
 
 
-
     @Input(INPUT_1)
     SubscribableChannel input1();
 
