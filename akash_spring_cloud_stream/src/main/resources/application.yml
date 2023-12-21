@@ -31,17 +31,32 @@
 spring:
   cloud:
     stream:
+      binders:
+        local_rabbit:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                host: 192.168.0.172
+                port: 5672
+                username: guest
+                password: guest
+                virtual-host: /
       bindings:
         input1:
           destination: exchange-ramos1
           group: queue1
+          binder: local_rabbit
         input2:
           destination: exchange-ramos1
           group: queue2
+          binder: local_rabbit
         output1:
           destination: exchange-ramos1
+          binder: local_rabbit
         output2:
           destination: exchange-ramos2
+          binder: local_rabbit
       rabbit:
         bindings:
 #          input1:
@@ -56,19 +71,9 @@ spring:
           output2:
             producer:
               exchange-type: direct
+#              routing-key-expression: "'bindKey2'"
 #        default:
 #          consumer:
 #            bindingRoutingKey: default-queue
 #          producer:
 #            exchangeType: direct
-      binders:
-        local_rabbit:
-          type: rabbit
-          environment:
-            spring:
-              rabbitmq:
-                host: 192.168.0.172
-                port: 5672
-                username: guest
-                password: guest
-                virtual-host: /
