@@ -24,6 +24,6 @@ public class MyCustomMessageController {
     public ResponseEntity publishMultipleMessage(@RequestBody FootballPlayer player){
 
         customProducer.sendMessageInteger(player.getJersey_no());
-        return ResponseEntity.ok("Message Published:" + player);
+        return ResponseEntity.ok("Message Published: " + player);
     }
 }

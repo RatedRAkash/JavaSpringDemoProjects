@@ -32,45 +32,35 @@ spring:
   cloud:
     stream:
       bindings:
-        #        input:
-        #          destination: myTopic-exchange
-        #          binder: local_rabbit
-        #        output:
-        #          destination: myTopic-exchange
-        #          binder: local_rabbit
         input1:
-          group: myQueue1
-          destination: topic1-exchange
-          binder: local_rabbit
+          destination: exchange-ramos1
+          group: queue1
         input2:
-          group: myQueue2
-          destination: topic2-exchange
-          binder: local_rabbit
+          destination: exchange-ramos1
+          group: queue2
         output1:
-          destination: topic1-exchange
-          binder: local_rabbit
+          destination: exchange-ramos1
         output2:
-          destination: topic2-exchange
-          binder: local_rabbit
-
+          destination: exchange-ramos2
       rabbit:
         bindings:
-          input1:
-            consumer:
-              bind-queue: true
-              bindingRoutingKey: 'my-routing-key1'
+#          input1:
+#            consumer:
+#              bindingRoutingKey: bindKey1
+#          input2:
+#            consumer:
+#              bindingRoutingKey: bindKey2
+          output1:
+            producer:
+              exchange-type: topic
+          output2:
+            producer:
               exchange-type: direct
-          input2:
-            consumer:
-              bind-queue: true
-              bindingRoutingKey: 'my-routing-key2'
-              exchange-type: direct
-#          output1:
-          #            producer:
-          #              routingKeyExpression: 'my-routing-key2'
-          #          output2:
-          #            producer:
-          #              routingKeyExpression: 'my-routing-key2'
+#        default:
+#          consumer:
+#            bindingRoutingKey: default-queue
+#          producer:
+#            exchangeType: direct
       binders:
         local_rabbit:
           type: rabbit
@@ -82,28 +72,3 @@ spring:
                 username: guest
                 password: guest
                 virtual-host: /
-
-
-
-#spring:
-#  cloud:
-#    stream:
-#      rabbit:
-#        bindings:
-#          input1:
-#            consumer:
-#              group: my-group
-#              bind-queue: true
-#              bindingRoutingKey: 'my-routing-key1'
-#              exchange-type: direct
-#          input2:
-#            consumer:
-#              bind-queue: true
-#              bindingRoutingKey: 'my-routing-key2'
-#              exchange-type: direct
-#          output1:
-#            producer:
-#              routingKeyExpression: 'my-routing-key2'
-#          output2:
-#            producer:
-#              routingKeyExpression: 'my-routing-key2'
