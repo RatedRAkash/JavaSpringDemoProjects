@@ -8,6 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class BaseController {
     @GetMapping("/")
     public String listStudents(Model model){
-        return "base";
+        return "layout/home";
     }
 }

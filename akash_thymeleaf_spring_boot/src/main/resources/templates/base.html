@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
 <head>
   <meta charset="ISO-8859-1">
   <title>Student Management System</title>
@@ -8,16 +7,16 @@
         href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
+  <link rel="stylesheet" th:href="@{/ramos_style.css}"/>
 </head>
 
 <body>
 <!-- Common header for all pages -->
 <header th:fragment="header">
-  <h1>My Website</h1>
 
   <nav class="navbar navbar-expand-md bg-dark navbar-dark">
     <!-- Brand -->
-    <a class="navbar-brand" th:href="@{/students}">Student Management System</a>
+    <a class="navbar-brand" th:href="@{/}">Student Management System</a>
 
     <!-- Toggler/collapsibe Button -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -31,7 +30,7 @@
           <a class="nav-link" th:href="@{/students}">Student Management</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" th:href="@{/students}">Teacher Management</a>
+          <a class="nav-link" th:href="@{/student/create}">Add Student</a>
         </li>
       </ul>
     </div>
@@ -39,12 +38,12 @@
 </header>
 
 <!-- Content block to be filled by child templates -->
-<div th:fragment="content">
+<div th:replace="${content}">
   <!-- Child templates will fill this block -->
 </div>
 
 <!-- Common footer for all pages -->
-<footer th:fragment="footer">
+<footer>
   <p>&copy; 2023 My Website</p>
 </footer>
 </body>
