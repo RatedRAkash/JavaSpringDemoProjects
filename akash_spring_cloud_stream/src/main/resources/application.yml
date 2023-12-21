@@ -28,87 +28,35 @@
 #       enabled: true
 
 
-#spring:
-#  cloud:
-#    stream:
-#      bindings:
-##        input:
-##          destination: myTopic-exchange
-##          binder: local_rabbit
-##        output:
-##          destination: myTopic-exchange
-##          binder: local_rabbit
-#        input1:
-#          group: myQueue1
-#          destination: topic1-exchange
-#          binder: local_rabbit
-#          consumer:
-#            bindingRoutingKey: 'my-routing-key1'
-#        input2:
-#          group: myQueue2
-#          destination: topic2-exchange
-#          exchangeType: direct
-#          binder: local_rabbit
-#        output1:
-#          destination: topic1-exchange
-#          binder: local_rabbit
-#        output2:
-#          destination: topic2-exchange
-#          binder: local_rabbit
-#          exchangeType: direct
-#          routingKeyExpression: 'my-routing-key1'
-#
-#      binders:
-#        local_rabbit:
-#          type: rabbit
-#          environment:
-#            spring:
-#              rabbitmq:
-#                host: localhost
-#                port: 5672
-#                username: guest
-#                password: guest
-#                virtual-host: /
-
-
-#spring:
-#  cloud:
-#    stream:
-#      bindings:
-#        input:
-#          destination: queue.log.messages
-#          binder: local_rabbit
-#          group: logMessageConsumers
-#        output:
-#          destination: queue.pretty.log.messages
-#          binder: local_rabbit
-#      binders:
-#        local_rabbit:
-#          type: rabbit
-#          environment:
-#            spring:
-#              rabbitmq:
-#                host: 192.168.0.172
-#                port: 5672
-#                username: guest
-#                password: guest
-#                virtual-host: /
-#server:
-#  port: 0
-#management:
-#  health:
-#    binders:
-#       enabled: true
-
-
 spring:
   cloud:
     stream:
+      bindings:
+        #        input:
+        #          destination: myTopic-exchange
+        #          binder: local_rabbit
+        #        output:
+        #          destination: myTopic-exchange
+        #          binder: local_rabbit
+        input1:
+          group: myQueue1
+          destination: topic1-exchange
+          binder: local_rabbit
+        input2:
+          group: myQueue2
+          destination: topic2-exchange
+          binder: local_rabbit
+        output1:
+          destination: topic1-exchange
+          binder: local_rabbit
+        output2:
+          destination: topic2-exchange
+          binder: local_rabbit
+
       rabbit:
         bindings:
           input1:
             consumer:
-              group: my-group
               bind-queue: true
               bindingRoutingKey: 'my-routing-key1'
               exchange-type: direct
@@ -117,9 +65,45 @@ spring:
               bind-queue: true
               bindingRoutingKey: 'my-routing-key2'
               exchange-type: direct
-          output1:
-            producer:
-              routingKeyExpression: 'my-routing-key2'
-          output2:
-            producer:
-              routingKeyExpression: 'my-routing-key2'
+#          output1:
+          #            producer:
+          #              routingKeyExpression: 'my-routing-key2'
+          #          output2:
+          #            producer:
+          #              routingKeyExpression: 'my-routing-key2'
+      binders:
+        local_rabbit:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                host: 192.168.0.172
+                port: 5672
+                username: guest
+                password: guest
+                virtual-host: /
+
+
+
+#spring:
+#  cloud:
+#    stream:
+#      rabbit:
+#        bindings:
+#          input1:
+#            consumer:
+#              group: my-group
+#              bind-queue: true
+#              bindingRoutingKey: 'my-routing-key1'
+#              exchange-type: direct
+#          input2:
+#            consumer:
+#              bind-queue: true
+#              bindingRoutingKey: 'my-routing-key2'
+#              exchange-type: direct
+#          output1:
+#            producer:
+#              routingKeyExpression: 'my-routing-key2'
+#          output2:
+#            producer:
+#              routingKeyExpression: 'my-routing-key2'

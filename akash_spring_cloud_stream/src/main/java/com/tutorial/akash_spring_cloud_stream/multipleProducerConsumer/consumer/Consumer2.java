@@ -10,6 +10,6 @@ public class Consumer2 {
     @StreamListener(MyChannels.INPUT_2)
     public void handleMessageFromTopic2(String message) {
         // Process messages from topic-2
-        System.out.println("Handled Topic2: " + message);
+        System.out.println("Consumer2 handled: " + message);
     }
 }
