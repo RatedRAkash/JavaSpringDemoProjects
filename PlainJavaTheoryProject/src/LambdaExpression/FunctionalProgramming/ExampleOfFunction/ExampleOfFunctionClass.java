@@ -1,4 +1,4 @@
-package LambdaExpression.FunctionalProgramming;
+package LambdaExpression.FunctionalProgramming.ExampleOfFunction;
 
 import LambdaExpression.FunctionalProgramming.model.Employee;
 import LambdaExpression.FunctionalProgramming.model.Person;
@@ -19,11 +19,11 @@ public class ExampleOfFunctionClass {
             - We can use a function for that so that Different Companies can generate EmployeeID Differently
      */
 
-    public static Employee generateEmployeeId(Person personObj, Function<Person, String> mapToId) {
+    public static Employee generateEmployeeId(Person personObj, Function<Person, String> mapToIdFunction) {
         Employee employeeObj = new Employee();
 
         // jey generateEmployeeId() ei function ke call dibe shey "Function" er moddhe bolbe jey kivabe Person object theke String ee Conversion korbe
-        employeeObj.setId(mapToId.apply(personObj));
+        employeeObj.setId(mapToIdFunction.apply(personObj)); //TODO: mapToIdFunction er jei Implementation Provide kora hobe... sheitar Code Trigger korbe
 
         return employeeObj;
     }
@@ -36,18 +36,18 @@ public class ExampleOfFunctionClass {
 
 
         // Company1 want all UPPERCASE for EmployeeID
-        Employee employeeObj1 = generateEmployeeId(personObj, (person) -> {
-            return person.getName().toUpperCase();
+        Employee employeeObj1 = generateEmployeeId(personObj, (Person per) -> {  //Parameter er TYPE "Person" Nah dileo hui(nicher Example)
+            return per.getName().toUpperCase();
         });
 
 
         // Company2 want all EMAIL+@RMA for EmployeeID
-        Employee employeeObj2 = generateEmployeeId(personObj, (person) -> {
-            return person.getEmail()+"@RMA";
+        Employee employeeObj2 = generateEmployeeId(personObj, (per) -> {
+            return per.getEmail()+"@RMA";
         });
 
         // Company3 want all "RMA."+NAME for EmployeeID
-        Employee employeeObj3 = generateEmployeeId(personObj, (person) -> "RMA." + person.getEmail());
+        Employee employeeObj3 = generateEmployeeId(personObj, (per) -> "RMA." + per.getEmail());
 
         System.out.println(employeeObj1.getId());
         System.out.println(employeeObj2.getId());
