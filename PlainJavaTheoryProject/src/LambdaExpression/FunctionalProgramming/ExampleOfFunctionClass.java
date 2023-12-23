@@ -33,15 +33,21 @@ public class ExampleOfFunctionClass {
         Person personObj = new Person("Sergio Ramos", "ramos@gmail.com");
 
         //TODO: Function<Person, String> mapToId  ---> so, ekta Person Object pass korbo and Return korbo ekta String, shei String ta Automatic giye EmployeeId te giye save hobe
+
+
+        // Company1 want all UPPERCASE for EmployeeID
         Employee employeeObj1 = generateEmployeeId(personObj, (person) -> {
             return person.getName().toUpperCase();
         });
 
+
+        // Company2 want all EMAIL+@RMA for EmployeeID
         Employee employeeObj2 = generateEmployeeId(personObj, (person) -> {
-            return person.getEmail()+4;
+            return person.getEmail()+"@RMA";
         });
 
-        Employee employeeObj3 = generateEmployeeId(personObj, (person) -> "ShortcutMethodCalling:" + person.getEmail());
+        // Company3 want all "RMA."+NAME for EmployeeID
+        Employee employeeObj3 = generateEmployeeId(personObj, (person) -> "RMA." + person.getEmail());
 
         System.out.println(employeeObj1.getId());
         System.out.println(employeeObj2.getId());

@@ -1,4 +1,4 @@
-package LambdaExpression;
+package LambdaExpression.NormalLambdaFunction;
 
 public class Main {
     public static void main(String[] args) {
@@ -11,16 +11,16 @@ public class Main {
         printYourParams(new CustomFunctionalInterface() {
             @Override
             public String appendRamosInParameter(String str) {
-                return "Ramos "+str;
+                return "Ramos1 "+str;
             }
         });
 
 
         //TODO RULE-2: eivabe Direct Lambda Expression er madhome oo kora jay, ekadik Parameter huile "Comma(,)" diye diye likbo
-        printYourParams((str) -> "Ramos "+str);
-        printYourParams(str -> "Ramos "+str);
+        printYourParams((str) -> "Ramos2 "+str);
+        printYourParams(str -> "Ramos3 "+str);
         printYourParams(str -> {
-            return "Ramos "+str;
+            return "Ramos4 "+str;
         });
 
     }

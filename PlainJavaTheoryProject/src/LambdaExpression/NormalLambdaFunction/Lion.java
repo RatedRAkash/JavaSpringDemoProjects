@@ -1,4 +1,4 @@
-package LambdaExpression;
+package LambdaExpression.NormalLambdaFunction;
 
 public class Lion implements Animal{
     @Override
