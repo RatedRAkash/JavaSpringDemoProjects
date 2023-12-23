@@ -37,13 +37,11 @@ public class ExampleOfSupplierClass {
 
         //Supplier takes ZERO Input, it ONLY RETURNS Value
         createEmployee(personObj, () -> {
-            String str = "Invalid Person at " + LocalDateTime.now();
+            String str = "Invalid Person, at " + LocalDateTime.now();
             return str;
         });
 
-        createEmployee(personObj, () -> "Invalid Person at " + LocalDateTime.now());
-
-
+        createEmployee(personObj, () -> "Email Not Provided for Person, at " + LocalDateTime.now());
     }
 
 }
