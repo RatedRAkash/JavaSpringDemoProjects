@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface AuthorApiService {
 
-    @GET("authors")
+    @GET("/authors")
     Call<List<AuthorResponseDto>> getAllAuthors();
 }
