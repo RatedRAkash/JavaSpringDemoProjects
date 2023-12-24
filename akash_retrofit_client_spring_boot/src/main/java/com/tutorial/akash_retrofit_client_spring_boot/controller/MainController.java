@@ -1,7 +1,6 @@
 package com.tutorial.akash_retrofit_client_spring_boot.controller;
 
 import com.tutorial.akash_retrofit_client_spring_boot.FutureStudioTutorial.FutureStudioRestClient;
-import com.tutorial.akash_retrofit_client_spring_boot.FutureStudioTutorial.ServiceGenerator;
 import com.tutorial.akash_retrofit_client_spring_boot.RestClientAdvanceMechanism.RMARestClient;
 import com.tutorial.akash_retrofit_client_spring_boot.RestClientAdvanceMechanism.api.AuthorApiService;
 import com.tutorial.akash_retrofit_client_spring_boot.RestClientAdvanceMechanism.dto.AuthorResponseDto;
@@ -12,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class MyController {
+public class MainController {
 
     @GetMapping("/")
     String home(){
