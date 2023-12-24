@@ -1,6 +1,6 @@
-package com.tutorial.akash_retrofit_client_spring_boot.restClient.api;
+package com.tutorial.akash_retrofit_client_spring_boot.FutureStudioTutorial;
 
-import com.tutorial.akash_retrofit_client_spring_boot.restClient.dto.AuthorResponseDto;
+import com.tutorial.akash_retrofit_client_spring_boot.FutureStudioTutorial.dto.AuthorResponseDto;
 import retrofit2.Call;
 import retrofit2.http.GET;
 

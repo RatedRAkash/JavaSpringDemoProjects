@@ -1,4 +1,4 @@
-package com.tutorial.akash_retrofit_client_spring_boot.restClient;
+package com.tutorial.akash_retrofit_client_spring_boot.RestClientAdvanceMechanism;
 
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;

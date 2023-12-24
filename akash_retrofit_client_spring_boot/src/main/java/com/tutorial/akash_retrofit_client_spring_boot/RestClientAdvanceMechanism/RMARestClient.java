@@ -1,7 +1,6 @@
-package com.tutorial.akash_retrofit_client_spring_boot.restClient;
+package com.tutorial.akash_retrofit_client_spring_boot.RestClientAdvanceMechanism;
 import com.google.common.collect.Lists;
 import okhttp3.Interceptor;
-import okhttp3.ResponseBody;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import retrofit2.Call;

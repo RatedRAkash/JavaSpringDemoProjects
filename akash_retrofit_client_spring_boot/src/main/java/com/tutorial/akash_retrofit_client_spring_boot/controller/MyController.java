@@ -1,8 +1,10 @@
 package com.tutorial.akash_retrofit_client_spring_boot.controller;
 
-import com.tutorial.akash_retrofit_client_spring_boot.restClient.RMARestClient;
-import com.tutorial.akash_retrofit_client_spring_boot.restClient.api.AuthorApiService;
-import com.tutorial.akash_retrofit_client_spring_boot.restClient.dto.AuthorResponseDto;
+import com.tutorial.akash_retrofit_client_spring_boot.FutureStudioTutorial.FutureStudioRestClient;
+import com.tutorial.akash_retrofit_client_spring_boot.RestClientAdvanceMechanism.RMARestClient;
+import com.tutorial.akash_retrofit_client_spring_boot.RestClientAdvanceMechanism.api.AuthorApiService;
+import com.tutorial.akash_retrofit_client_spring_boot.RestClientAdvanceMechanism.dto.AuthorResponseDto;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,9 +18,14 @@ public class MyController {
         return "home";
     }
 
+    @GetMapping(path = "/simple-call-api")
+    public List<com.tutorial.akash_retrofit_client_spring_boot.FutureStudioTutorial.dto.AuthorResponseDto> simple_call_api() throws Exception {
+        FutureStudioRestClient futureStudioRestClient = new FutureStudioRestClient("http://localhost:8080/");
+        return futureStudioRestClient.getResponseResult();
+    }
 
     @GetMapping(path = "/call-api")
-    public List<AuthorResponseDto> call_api() throws Exception {
+    public List<AuthorResponseDto> advance_call_api() throws Exception {
         return new RMARestClient<AuthorApiService, List<AuthorResponseDto>>()
                 .setBaseUrl("http://localhost:8080/")
                 .methodName("getAllAuthors()")
