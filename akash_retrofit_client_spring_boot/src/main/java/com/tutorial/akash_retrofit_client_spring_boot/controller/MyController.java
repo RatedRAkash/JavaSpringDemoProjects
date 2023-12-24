@@ -23,6 +23,7 @@ public class MyController {
     public List<com.tutorial.akash_retrofit_client_spring_boot.FutureStudioTutorial.dto.AuthorResponseDto> simple_call_api() throws Exception {
         FutureStudioRestClient futureStudioRestClient = new FutureStudioRestClient("http://localhost:8080");
         return futureStudioRestClient.getResponseResult();
+//        return ServiceGenerator.callApi(com.tutorial.akash_retrofit_client_spring_boot.FutureStudioTutorial.AuthorApiService.class, s->s.getAllAuthors());
 //        return ServiceGenerator.createService(com.tutorial.akash_retrofit_client_spring_boot.FutureStudioTutorial.AuthorApiService.class).getAllAuthors().execute().body();
     }
 

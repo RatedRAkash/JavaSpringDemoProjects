@@ -76,12 +76,12 @@ public class RMARestClient<TService, TDto> {
     public TDto callApi(Class<TService> tServiceClass, Function<TService, Call<TDto>> action) throws Exception{
 
         // TODO: tServiceClass Object theke, TService er Type er Object Create korbo RetrofitClient Create korar somoy
-        TService service = ClientHelper.buildRetrofitClient(tServiceClass, baseUrl, timeout,
+        TService tServiceClassObj = ClientHelper.buildRetrofitClient(tServiceClass, baseUrl, timeout,
                 interceptorsList.toArray(new Interceptor[0]));
         Response<TDto> response = null;
         try {
             logger.info(methodName);
-            response = action.apply(service).execute();
+            response = action.apply(tServiceClassObj).execute();
         } catch (SocketTimeoutException ex) {
             logger.error("Calling service timeout", ex);
 //            throw new NpTimeOutException();
