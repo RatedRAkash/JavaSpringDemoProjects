@@ -73,7 +73,7 @@ public class RMARestClient<TService, TDto> {
     }
 
 // *********** API Calling Methods ***********
-    public TDto callApi(Class<TService> tServiceClass, Function<TService, Call<TDto>> action) throws Exception{
+    public TDto callApi(Class<TService> tServiceClass, Function<TService, Call<TDto>> actionFunctionalInterface) throws Exception{
 
         // TODO: tServiceClass Object theke, TService er Type er Object Create korbo RetrofitClient Create korar somoy
         TService tServiceClassObj = ClientHelper.buildRetrofitClient(tServiceClass, baseUrl, timeout,
@@ -82,8 +82,9 @@ public class RMARestClient<TService, TDto> {
         try {
             logger.info(methodName);
             //TODO:
-            // Call<TDto>> ---> action TService Class er Vitor er jei Function Call kore amra Endpoint ee Hit kobro, shei Function ta ke Call korar jonno ei Parameter lagbe
-            response = action.apply(tServiceClassObj).execute();
+            // Call<TDto>> ---> action TService Class er Vitor er jei Function Call kore amra CONTROLLER er jei Endpoint ee Hit kobro, shei Function ta ke Call korar jonno ei Parameter lagbe
+            response = actionFunctionalInterface.apply(tServiceClassObj)
+                    .execute(); //Same Thread ee Synchronous vabe Api Call hobe
         } catch (SocketTimeoutException ex) {
             logger.error("Calling service timeout", ex);
 //            throw new NpTimeOutException();

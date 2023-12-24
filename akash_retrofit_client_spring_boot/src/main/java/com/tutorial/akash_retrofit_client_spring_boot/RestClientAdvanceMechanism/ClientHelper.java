@@ -11,19 +11,19 @@ import java.util.concurrent.TimeUnit;
 public class ClientHelper {
     public static final int DEFAULT_TIMEOUT = 60;
 
-    public static <T> T buildRetrofitClient(Class<T> tClass, String base, int timeout,
+    public static <T> T buildRetrofitClient(Class<T> tClass, String baseUrl, int timeout,
                                             Interceptor... interceptors) {
-        Retrofit retrofit = buildRetrofit(base, timeout, interceptors);
+        Retrofit retrofit = buildRetrofit(baseUrl, timeout, interceptors);
 
-        // jei "Class" pathano huise... shei Class er against ee Retrofit Client Create kore, shei Class ta kei Return kore dilam
+        // jei "Class" pathano huise... shei Class er against ee Retrofit Client Create kore, shei Class ta kei Return kore dilam, jate kore oi CLASS er Endpoint Method gula Call korte pari
         return retrofit.create(tClass);
     }
 
-    static Retrofit buildRetrofit(String base, int timeout, Interceptor... interceptors) {
-        OkHttpClient client = buildOkHTTPClient(timeout, interceptors);
+    static Retrofit buildRetrofit(String baseUrl, int timeout, Interceptor... interceptors) {
+        OkHttpClient okHttpClient = buildOkHTTPClient(timeout, interceptors);
         return new Retrofit.Builder()
-                .baseUrl(base)
-                .client(client)
+                .baseUrl(baseUrl)
+                .client(okHttpClient)
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .addConverterFactory(JacksonConverterFactory.create())
                 .build();

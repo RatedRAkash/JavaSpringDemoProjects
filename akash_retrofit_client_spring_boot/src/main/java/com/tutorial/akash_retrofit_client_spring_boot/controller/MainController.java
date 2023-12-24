@@ -31,6 +31,6 @@ public class MainController {
         return new RMARestClient<AuthorApiService, List<AuthorResponseDto>>()
                 .setBaseUrl("http://localhost:8080")
                 .methodName("getAllAuthors()")
-                .callApi(AuthorApiService.class, s -> s.getAllAuthors());
+                .callApi(AuthorApiService.class, s -> s.getAllAuthors()); //implementation of Function Class --> Function<TService, Call<TDto>> actionFunctionalInterface
     }
 }
