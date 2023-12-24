@@ -81,6 +81,8 @@ public class RMARestClient<TService, TDto> {
         Response<TDto> response = null;
         try {
             logger.info(methodName);
+            //TODO:
+            // Call<TDto>> ---> action TService Class er Vitor er jei Function Call kore amra Endpoint ee Hit kobro, shei Function ta ke Call korar jonno ei Parameter lagbe
             response = action.apply(tServiceClassObj).execute();
         } catch (SocketTimeoutException ex) {
             logger.error("Calling service timeout", ex);

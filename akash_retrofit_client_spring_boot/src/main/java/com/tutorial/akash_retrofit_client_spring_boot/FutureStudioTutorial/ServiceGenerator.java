@@ -26,6 +26,8 @@ public class ServiceGenerator {
 
     public static <TDto, TService> TDto callApi(Class<TService> serviceClass, Function<TService, Call<TDto>> action) throws IOException {
         TService tServiceClassObj = createService(serviceClass);
+        //TODO:
+        // Call<TDto>> ---> action TService Class er Vitor er jei Function Call kore amra Endpoint ee Hit kobro, shei Function ta ke Call korar jonno ei Parameter lagbe
         Response<TDto> mainResponseObj= action.apply(tServiceClassObj).execute();
         return mainResponseObj.body();
     }
