@@ -1,0 +1,32 @@
+spring:
+  cloud:
+    stream:
+      binders:
+        local_rabbit:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                host: 192.168.0.172
+                port: 5672
+                username: guest
+                password: guest
+                virtual-host: /
+      bindings:
+        TXN_TOPIC_INPUT:
+          destination: txnTopic
+          group: queue1
+          binder: local_rabbit
+        TXN_TOPIC_OUTPUT:
+          destination: txnTopic
+          binder: local_rabbit
+      rabbit:
+        bindings:
+          TXN_TOPIC_OUTPUT:
+            producer:
+              exchange-type: topic
+#        default:
+#          consumer:
+#            bindingRoutingKey: default-queue
+#          producer:
+#            exchangeType: direct
