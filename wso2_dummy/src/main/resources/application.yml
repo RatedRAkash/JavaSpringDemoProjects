@@ -13,12 +13,9 @@ spring:
                 password: guest
                 virtual-host: /
       bindings:
-        TXN_TOPIC_INPUT:
+        TXN_TOPIC:
           destination: txnTopic
-          group: queue1
-          binder: local_rabbit
-        TXN_TOPIC_OUTPUT:
-          destination: txnTopic
+          group: queueTxnTopic
           binder: local_rabbit
       rabbit:
         bindings:

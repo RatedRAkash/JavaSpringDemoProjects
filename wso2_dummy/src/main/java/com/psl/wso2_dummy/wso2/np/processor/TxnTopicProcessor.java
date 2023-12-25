@@ -6,12 +6,11 @@ import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.SubscribableChannel;
 
 public interface TxnTopicProcessor {
-    String TXN_TOPIC_INPUT = "TXN_TOPIC_INPUT";
-    String TXN_TOPIC_OUTPUT = "TXN_TOPIC_OUTPUT";
+    String TXN_TOPIC = "TXN_TOPIC";
 
-    @Input(TXN_TOPIC_INPUT)
+    @Input(TXN_TOPIC)
     SubscribableChannel txn_topic_input();
 
-    @Output(TXN_TOPIC_OUTPUT)
+    @Output(TXN_TOPIC)
     MessageChannel txn_topic_output();
 }

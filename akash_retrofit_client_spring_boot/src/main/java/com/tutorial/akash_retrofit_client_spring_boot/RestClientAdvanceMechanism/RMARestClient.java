@@ -1,5 +1,7 @@
 package com.tutorial.akash_retrofit_client_spring_boot.RestClientAdvanceMechanism;
 import com.google.common.collect.Lists;
+import com.tutorial.akash_retrofit_client_spring_boot.RestClientAdvanceMechanism.error.dto.ErrorDto;
+import com.tutorial.akash_retrofit_client_spring_boot.RestClientAdvanceMechanism.error.RMAException;
 import okhttp3.Interceptor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -73,11 +75,12 @@ public class RMARestClient<TService, TDto> {
     }
 
 // *********** API Calling Methods ***********
-    public TDto callApi(Class<TService> tServiceClass, Function<TService, Call<TDto>> actionFunctionalInterface) throws Exception{
+    public TDto callApi(Class<TService> tServiceClass, Function<TService, Call<TDto>> actionFunctionalInterface) throws RMAException {
 
         // TODO: tServiceClass Object theke, TService er Type er Object Create korbo RetrofitClient Create korar somoy
         TService tServiceClassObj = ClientHelper.buildRetrofitClient(tServiceClass, baseUrl, timeout,
                 interceptorsList.toArray(new Interceptor[0]));
+
         Response<TDto> response = null;
         try {
             logger.info(methodName);
@@ -85,12 +88,15 @@ public class RMARestClient<TService, TDto> {
             // Call<TDto>> ---> action TService Class er Vitor er jei Function Call kore amra CONTROLLER er jei Endpoint ee Hit kobro, shei Function ta ke Call korar jonno ei Parameter lagbe
             response = actionFunctionalInterface.apply(tServiceClassObj)
                     .execute(); //Same Thread ee Synchronous vabe Api Call hobe
+
         } catch (SocketTimeoutException ex) {
             logger.error("Calling service timeout", ex);
 //            throw new NpTimeOutException();
+            throw new RMAException(response);
         } catch (IOException ex) {
             logger.error("Unable to call Service", ex);
 //            throw new NpServiceCallException();
+            throw new RMAException(response);
         }
 
         logger.info("Api service response: " + response.code());

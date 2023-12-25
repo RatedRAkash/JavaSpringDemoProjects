@@ -5,6 +5,7 @@ import com.tutorial.akash_retrofit_client_spring_boot.RestClientAdvanceMechanism
 import com.tutorial.akash_retrofit_client_spring_boot.RestClientAdvanceMechanism.api.AuthorApiService;
 import com.tutorial.akash_retrofit_client_spring_boot.RestClientAdvanceMechanism.dto.AuthorResponseDto;
 
+import com.tutorial.akash_retrofit_client_spring_boot.RestClientAdvanceMechanism.error.RMAException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,7 +28,7 @@ public class MainController {
     }
 
     @GetMapping(path = "/call-api")
-    public List<AuthorResponseDto> advance_call_api() throws Exception {
+    public List<AuthorResponseDto> advance_call_api() throws RMAException {
         return new RMARestClient<AuthorApiService, List<AuthorResponseDto>>()
                 .setBaseUrl("http://localhost:8080")
                 .methodName("getAllAuthors()")
