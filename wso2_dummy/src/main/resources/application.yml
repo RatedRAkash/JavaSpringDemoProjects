@@ -7,21 +7,39 @@ spring:
           environment:
             spring:
               rabbitmq:
-                host: 192.168.0.172
+                host: 10.10.15.107
                 port: 5672
                 username: guest
                 password: guest
                 virtual-host: /
+              listener:
+                direct:
+                  acknowledge-mode: MANUAL
+                simple:
+                  retry:
+                    enabled: true
+              template:
+                retry:
+                  enabled: true
+                receive-timeout: 5000
       bindings:
-        TXN_TOPIC:
-          destination: txnTopic
-          group: queueTxnTopic
+        TXN_TOPIC_INPUT:
+          destination: psl_demo
+          group: queue13
+          consumer:
+            auto-bind-dlq: true
+            republishToDlq: true
+            maxAttempts: 5
           binder: local_rabbit
-      rabbit:
-        bindings:
-          TXN_TOPIC_OUTPUT:
-            producer:
-              exchange-type: topic
+
+        TXN_TOPIC_OUTPUT:
+          destination: psl_demo
+          binder: local_rabbit
+#      rabbit:
+#        bindings:
+#          TXN_TOPIC_OUTPUT:
+#            producer:
+#              exchange-type: topic
 #        default:
 #          consumer:
 #            bindingRoutingKey: default-queue
