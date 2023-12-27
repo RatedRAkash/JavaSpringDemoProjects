@@ -22,15 +22,15 @@ spring:
               template:
                 retry:
                   enabled: true
-                receive-timeout: 5000
+#                receive-timeout: 5000
       bindings:
         TXN_TOPIC_INPUT:
           destination: psl_demo
           group: queue13
-          consumer:
-            auto-bind-dlq: true
-            republishToDlq: true
-            maxAttempts: 5
+#          consumer:
+#            auto-bind-dlq: true
+#            republishToDlq: true
+#            maxAttempts: 5
           binder: local_rabbit
 
         TXN_TOPIC_OUTPUT:
