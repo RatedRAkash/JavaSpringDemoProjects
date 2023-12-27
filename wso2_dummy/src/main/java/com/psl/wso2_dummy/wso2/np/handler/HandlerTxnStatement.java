@@ -13,9 +13,7 @@ public class HandlerTxnStatement {
         System.out.println("Consumer1 SEND_MONEY handled: " + txnType.toString());
     }
 
-    @StreamListener(
-            target = TxnTopicProcessor.TXN_TOPIC_INPUT,
-            condition = "payload.txnType.equals('RECHARGE')")
+    @StreamListener(target = TxnTopicProcessor.TXN_TOPIC_INPUT)
     public void consumer2(TxnType txnType) {
         System.out.println("Consumer2 RECHARGE handled: " + txnType.toString());
     }
