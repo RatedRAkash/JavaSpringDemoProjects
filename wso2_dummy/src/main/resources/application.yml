@@ -13,15 +13,15 @@ spring:
                 username: guest
                 password: guest
                 virtual-host: /
-              listener:
-                direct:
-                  acknowledge-mode: MANUAL
-                simple:
-                  retry:
-                    enabled: true
-              template:
-                retry:
-                  enabled: true
+#              listener:
+#                direct:
+#                  acknowledge-mode: MANUAL
+#                simple:
+#                  retry:
+#                    enabled: true
+#              template:
+#                retry:
+#                  enabled: true
 #                receive-timeout: 5000
       bindings:
         TXN_TOPIC_INPUT:
