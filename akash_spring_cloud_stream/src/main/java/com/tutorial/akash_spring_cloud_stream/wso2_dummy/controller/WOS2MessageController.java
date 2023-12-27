@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class MyCustomMessageController {
+public class WOS2MessageController {
 
     private PublisherTxn publisherTxn;
 
 
     @Autowired
-    public MyCustomMessageController(PublisherTxn publisherTxn) {
+    public WOS2MessageController(PublisherTxn publisherTxn) {
         this.publisherTxn = publisherTxn;
     }
 

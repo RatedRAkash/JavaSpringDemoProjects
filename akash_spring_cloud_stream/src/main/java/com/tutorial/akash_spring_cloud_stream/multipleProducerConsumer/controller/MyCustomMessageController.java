@@ -13,7 +13,6 @@ public class MyCustomMessageController {
 
     private MyCustomProducer customProducer;
 
-
     @Autowired
     public MyCustomMessageController(MyCustomProducer customProducer) {
         this.customProducer = customProducer;

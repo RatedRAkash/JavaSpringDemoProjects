@@ -57,6 +57,20 @@ spring:
         output2:
           destination: exchange-ramos2
           binder: local_rabbit
+
+        # WSO2 topic
+        TXN_TOPIC_INPUT:
+          destination: psl_demo
+          group: queue13
+          consumer:
+            auto-bind-dlq: true
+            republishToDlq: true
+            maxAttempts: 5
+          binder: local_rabbit
+        TXN_TOPIC_OUTPUT:
+          destination: psl_demo
+          binder: local_rabbit
+
       rabbit:
         bindings:
 #          input1:
