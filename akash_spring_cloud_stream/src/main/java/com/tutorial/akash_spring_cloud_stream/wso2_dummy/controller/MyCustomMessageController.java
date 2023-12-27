@@ -1,7 +1,7 @@
-package com.psl.wso2_dummy.controller;
+package com.tutorial.akash_spring_cloud_stream.wso2_dummy.controller;
 
-import com.psl.wso2_dummy.wso2.np.model.TxnType;
-import com.psl.wso2_dummy.wso2.np.publisher.PublisherTxn;
+import com.tutorial.akash_spring_cloud_stream.wso2_dummy.np.model.TxnType;
+import com.tutorial.akash_spring_cloud_stream.wso2_dummy.np.publisher.PublisherTxn;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

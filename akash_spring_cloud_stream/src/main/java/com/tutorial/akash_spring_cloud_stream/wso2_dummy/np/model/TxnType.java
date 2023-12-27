@@ -1,4 +1,4 @@
-package com.psl.wso2_dummy.wso2.np.model;
+package com.tutorial.akash_spring_cloud_stream.wso2_dummy.np.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

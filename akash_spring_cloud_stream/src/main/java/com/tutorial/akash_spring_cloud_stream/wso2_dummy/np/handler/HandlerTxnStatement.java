@@ -1,7 +1,7 @@
-package com.psl.wso2_dummy.wso2.np.handler;
+package com.tutorial.akash_spring_cloud_stream.wso2_dummy.np.handler;
 
-import com.psl.wso2_dummy.wso2.np.model.TxnType;
-import com.psl.wso2_dummy.wso2.np.processor.TxnTopicProcessor;
+import com.tutorial.akash_spring_cloud_stream.wso2_dummy.np.model.TxnType;
+import com.tutorial.akash_spring_cloud_stream.wso2_dummy.np.processor.TxnTopicProcessor;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.StreamListener;
 
