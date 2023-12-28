@@ -1,1 +1,8 @@
 rootProject.name = 'wso2_dummy'
+
+//include modules
+include('modules:nobopay-data-model')
+include('modules:common')
+
+//include application
+include('application:wso2-backend')

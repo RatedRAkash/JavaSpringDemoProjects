@@ -1,0 +1,48 @@
+spring:
+  cloud:
+    stream:
+      binders:
+        local_rabbit:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+#                host: 10.10.15.107
+                host: localhost
+                port: 5672
+                username: guest
+                password: guest
+                virtual-host: /
+#              listener:
+#                direct:
+#                  acknowledge-mode: MANUAL
+#                simple:
+#                  retry:
+#                    enabled: true
+#              template:
+#                retry:
+#                  enabled: true
+#                receive-timeout: 5000
+      bindings:
+        TXN_TOPIC_INPUT:
+          destination: txn_topic_exchange
+          group: txn_topic
+#          consumer:
+#            auto-bind-dlq: true
+#            republishToDlq: true
+#            maxAttempts: 5
+          binder: local_rabbit
+
+        TXN_TOPIC_OUTPUT:
+          destination: txn_topic_exchange
+          binder: local_rabbit
+#      rabbit:
+#        bindings:
+#          TXN_TOPIC_OUTPUT:
+#            producer:
+#              exchange-type: topic
+#        default:
+#          consumer:
+#            bindingRoutingKey: default-queue
+#          producer:
+#            exchangeType: direct
