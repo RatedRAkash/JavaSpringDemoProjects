@@ -21,16 +21,16 @@ public class Event implements Serializable {
     @Column(name = "event_time")
     private Date eventTime;
 
-    @Column(name = "event_type", length = 20)
+    @Column(name = "event_type", length = 20, nullable = false)
     private String eventType;
 
-    @Column(name = "mobile_no", length = 255)
+    @Column(name = "mobile_no")
     private String mobileNo;
 
     @Column(name = "root_event", columnDefinition = "text")
     private String rootEvent;
 
-    @Column(length = 20)
+    @Column(length = 20, nullable = false)
     private String status;
 
     @Column(length = 50)

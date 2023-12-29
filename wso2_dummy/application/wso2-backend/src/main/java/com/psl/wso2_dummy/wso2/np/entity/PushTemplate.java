@@ -13,15 +13,16 @@ public class PushTemplate implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 100)
+    @Column(length = 100, nullable = false)
     private String title;
 
-    @Column(length = 200)
+    @Column(length = 200, nullable = false)
     private String body;
 
+    @Column(columnDefinition = "boolean default true", nullable = false)
     private boolean active;
 
-    @Column(length = 100)
+    @Column(length = 100, nullable = false)
     private String type;
 
     @Column(name = "error_code")

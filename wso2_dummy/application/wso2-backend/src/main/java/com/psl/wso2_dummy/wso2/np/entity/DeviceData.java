@@ -14,7 +14,7 @@ public class DeviceData implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 36)
+    @Column(length = 36, nullable = false)
     private String uuid;
 
     @Column(name = "device_type", length = 20)
@@ -25,7 +25,7 @@ public class DeviceData implements Serializable {
 
     private Date timestamp;
 
-    @Column(name = "user_id", length = 100)
+    @Column(name = "user_id", length = 100, nullable = false)
     private String userId;
 
 

@@ -14,23 +14,24 @@ public class TopupVendorConfig implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private boolean active;
 
-    @Column(name = "auth_params", length = 255)
+    @Column(name = "auth_params")
     private String authParams;
 
-    @Column(name = "base_url", length = 100)
+    @Column(name = "base_url", length = 100, nullable = false)
     private String baseUrl;
 
-    @Column(name = "create_date")
+    @Column(name = "create_date", nullable = false)
     private Date createDate;
 
-    @Column(length = 30)
+    @Column(length = 30, nullable = false)
     private String identifier;
 
-    @Column(length = 255)
     private String password;
 
+    @Column(nullable = false)
     private Integer priority;
 
     @Column(name = "refresh_token", columnDefinition = "text")
@@ -39,20 +40,20 @@ public class TopupVendorConfig implements Serializable {
     @Column(columnDefinition = "text")
     private String token;
 
-    @Column(name = "token_type", length = 255)
+    @Column(name = "token_type")
     private String tokenType;
 
 
     @Column(name = "update_date")
     private Date updateDate;
 
-    @Column(name = "user_name", length = 255)
+    @Column(name = "user_name")
     private String userName;
 
-    @Column(length = 20)
+    @Column(length = 20, nullable = false)
     private String wallet;
 
-    @Column(name = "failure_limit")
+    @Column(name = "failure_limit", nullable = false, columnDefinition = "integer default 15")
     private Integer failureLimit;
 
     public TopupVendorConfig() {

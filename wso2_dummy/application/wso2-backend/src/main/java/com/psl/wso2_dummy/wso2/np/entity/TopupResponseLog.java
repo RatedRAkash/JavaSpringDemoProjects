@@ -17,34 +17,35 @@ public class TopupResponseLog implements Serializable {
     @Column(name = "create_date")
     private Date createDate;
 
-    @Column(name = "customer_wallet", length = 11)
+    @Column(name = "customer_wallet", length = 11, nullable = false)
     private String customerWallet;
 
     @Column(length = 30)
     private String identifier;
 
-    @Column(length = 30)
+    @Column(length = 30, nullable = false)
     private String operator;
 
-    @Column(name = "reference_id", length = 255)
+    @Column(name = "reference_id")
     private String referenceId;
 
-    @Column(name = "request_text", length = 255)
+    @Column(name = "request_text")
     private String requestText;
 
+    //TODO hala madrid: existing DB te default valie "now()"
     @Column(name = "request_time")
     private Date requestTime;
 
     @Column(name = "response_code")
     private Integer responseCode;
 
-    @Column(name = "response_text", length = 255)
+    @Column(name = "response_text")
     private String responseText;
 
-    @Column(length = 50)
+    @Column(length = 50, nullable = false)
     private String status;
 
-    @Column(name = "trxn_id", length = 255)
+    @Column(name = "trxn_id")
     private String trxnId;
 
     @Column(name = "update_date")

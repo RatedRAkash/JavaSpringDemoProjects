@@ -17,28 +17,30 @@ public class SmsResponseLog implements Serializable {
     @Column(length = 255)
     private String activity;
 
-    @Column(name = "create_date")
+
+    //TODO hala madrid: existing DB te default valie "now()"
+    @Column(name = "create_date", nullable = false)
     private Date createDate;
 
-    @Column(length = 30)
+    @Column(length = 30, nullable = false)
     private String identifier;
 
-    @Column(name = "message_body", length = 255)
+    @Column(name = "message_body")
     private String messageBody;
 
-    @Column(name = "mobile_no", length = 13)
+    @Column(name = "mobile_no", length = 13, nullable = false)
     private String mobileNo;
 
     @Column(name = "response_text", length = 500)
     private String responseText;
 
-    @Column(name = "sms_count")
+    @Column(name = "sms_count", nullable = false)
     private Integer smsCount;
 
-    @Column(length = 255)
+    @Column()
     private String status;
 
-    @Column(name = "response_code")
+    @Column(name = "response_code", nullable = false)
     private Integer responseCode;
 
     public SmsResponseLog() {

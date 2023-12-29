@@ -14,23 +14,25 @@ public class SmsVendorConfig implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private boolean active;
 
-    @Column(name = "base_url", length = 100)
+    @Column(name = "base_url", length = 100, nullable = false)
     private String baseUrl;
 
-    @Column(name = "create_date")
+    @Column(name = "create_date", nullable = false)
     private Date createDate;
 
-    @Column(length = 30)
+    @Column(length = 30, nullable = false)
     private String identifier;
 
     @Column(length = 30)
     private String mask;
 
-    @Column(length = 255)
+    @Column()
     private String password;
 
+    @Column(nullable = false)
     private Integer priority;
 
     @Temporal(TemporalType.TIMESTAMP)

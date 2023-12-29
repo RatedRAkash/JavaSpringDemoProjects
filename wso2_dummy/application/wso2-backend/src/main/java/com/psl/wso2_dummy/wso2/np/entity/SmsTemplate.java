@@ -13,7 +13,7 @@ public class SmsTemplate implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 100)
+    @Column(length = 100, nullable = false)
     private String type;
 
     @Column(name = "from_body", length = 200)
@@ -22,10 +22,10 @@ public class SmsTemplate implements Serializable {
     @Column(name = "to_body", length = 200)
     private String toBody;
 
-    @Column(name = "from_sms")
+    @Column(name = "from_sms", nullable = false)
     private boolean fromSms;
 
-    @Column(name = "to_sms")
+    @Column(name = "to_sms", nullable = false)
     private boolean toSms;
 
     @Column(name = "error_code")
