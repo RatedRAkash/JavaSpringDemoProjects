@@ -17,6 +17,7 @@ public class LocationServiceImpl implements LocationService {
 
         logger.info("NP-Backend called for saving Location Data");
 
+        //TODO: Change BASEURL+Response DataType, also Make Singleton
         new NpRestClient<NpBackendApiService, Void>()
                 .setBaseUrl("http://localhost:8080/nobopay-backend/")
                 .callApi(NpBackendApiService.class, s -> s.saveLocationData(notificationDto));
