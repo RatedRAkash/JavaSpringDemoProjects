@@ -25,8 +25,9 @@ public class ClientHelper {
                                             Interceptor... interceptors) {
         retrofit = buildRetrofit(baseUrl, timeout, interceptors);
 
-        // jei "Class" pathano huise... shei Class er against ee Retrofit Client Create kore, shei Class ta kei Return kore dilam, jate kore oi CLASS er Endpoint Method gula Call korte pari
-        return retrofit.create(tClass);
+
+        //TODO: this here means, amra "tService" er jei INTERFACE Declare korsi... shei INTERFACE er CONCRETE CLASS(jaar moddhe Method Overrided ase) sheita return korbe
+        return retrofit.create(tClass); //eitar INTERFACE argument hisave ney & CONCRETE CLASS return kore jaar moddhe implementation likha takhe
     }
 
     static Retrofit buildRetrofit(String baseUrl, int timeout, Interceptor... interceptors) {

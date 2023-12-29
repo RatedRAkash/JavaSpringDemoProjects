@@ -45,10 +45,11 @@ public class FutureStudioRestClient {
 
         Retrofit.Builder retrofitBuilder = new Retrofit.Builder()
                 .baseUrl(this.baseUrl)
-                .client(okHttpClient) //amra jei Custom OkHttpClient Banaisi sheita RetrofitBuild korar somoy dukailam
+                .client(okHttpClient) //TODO: amra jei Custom OkHttpClient Banaisi sheita RetrofitBuild korar somoy dukailam
                 .addConverterFactory(JacksonConverterFactory.create());
         Retrofit retrofitClient = retrofitBuilder.build();
 
+        //TODO: this here means, amra "AuthorApiService" er jei INTERFACE Declare korsi... shei INTERFACE er CONCRETE CLASS(jaar moddhe Method Overrided ase) sheita return korbe
         AuthorApiService authorApiClient = retrofitClient.create(AuthorApiService.class);
 
         Call<List<AuthorResponseDto>> call = authorApiClient.getAllAuthors();
