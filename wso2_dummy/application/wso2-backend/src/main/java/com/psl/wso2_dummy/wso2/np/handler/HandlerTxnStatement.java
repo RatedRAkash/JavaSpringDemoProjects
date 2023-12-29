@@ -23,17 +23,20 @@ public class HandlerTxnStatement {
 
     @StreamListener(target = TxnTopicProcessor.TXN_TOPIC_INPUT)
     public void handlerLocation(NotificationDto notificationDto) {
-        logger.info("handlerLocation consumed: " + notificationDto.getEventType());
+        logger.info("HandlerLocation consumed ---> " + notificationDto.getEventType());
         try {
             locationService.postLocationDataToNpBackend(notificationDto);
         }
         catch (NpException exception){
             logger.info("Calling NP Backend Failed");
+
+            //TODO hala madrid: uncomment printStackTrace
+//            exception.printStackTrace();
         }
     }
 
     @StreamListener(target = TxnTopicProcessor.TXN_TOPIC_INPUT)
     public void handlerTxnNotification(NotificationDto notificationDto) {
-        logger.info("handlerTxnNotification consumed: " + notificationDto.getEventType());
+        logger.info("HandlerTxnNotification consumed ---> " + notificationDto.getEventType());
     }
 }

@@ -1,5 +1,6 @@
 package psl.np.common.utils;
 
+import okhttp3.ResponseBody;
 import psl.np.dataModel.constant.Errors;
 import psl.np.dataModel.dto.error.ErrorDto;
 import org.apache.logging.log4j.LogManager;
@@ -93,5 +94,39 @@ public class NpUtils {
         } catch (IOException ex) {
             logger.error("Error writing string to response body", ex);
         }
+    }
+
+    public static ErrorDto deserializeErrorDto(ResponseBody errorBody) throws IOException {
+        Errors error500 = Errors.INTERNAL_SERVER;
+        String errorStr = null;
+        if (errorBody != null) {
+            errorStr = errorBody.string();
+        }
+        if (Strings.isNullOrEmpty(errorStr)) {
+            logger.warn("Error response is: EMPTY");
+            ErrorDto errorDto = new ErrorDto();
+            errorDto.setCode(error500.getCode());
+            errorDto.setMessage(error500.getMessage());
+            return errorDto;
+        }
+        logger.warn("Error response: " + errorStr);
+        ErrorDto errorDto = MapperUtils.toObject(errorStr, ErrorDto.class);
+        if (errorDto.getCode() == 0) {
+            errorDto.setCode(error500.getCode());
+        }
+        if (Strings.isNullOrEmpty(errorDto.getMessage())) {
+            errorDto.setMessage(error500.getMessage());
+        }
+        return errorDto;
+    }
+
+    public static String processBaseUrl(String baseUrl) {
+        if (Strings.isNullOrEmpty(baseUrl)) {
+            return null;
+        }
+        if (!baseUrl.endsWith("/")) {
+            baseUrl = baseUrl + "/";
+        }
+        return baseUrl;
     }
 }

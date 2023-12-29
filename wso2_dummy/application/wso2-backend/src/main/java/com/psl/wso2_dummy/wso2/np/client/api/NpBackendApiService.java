@@ -1,4 +1,4 @@
-package psl.np.common.restClient.api;
+package com.psl.wso2_dummy.wso2.np.client.api;
 
 import psl.np.dataModel.dto.NotificationDto;
 import retrofit2.Call;
