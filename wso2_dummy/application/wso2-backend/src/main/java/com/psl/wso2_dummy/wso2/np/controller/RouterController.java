@@ -1,6 +1,6 @@
 package com.psl.wso2_dummy.wso2.np.controller;
 
-import psl.np.dataModel.constant.EnumConstant;
+import com.psl.wso2_dummy.wso2.np.constant.EnumConstant;
 import com.psl.wso2_dummy.wso2.np.dto.NotificationDto;
 import com.psl.wso2_dummy.wso2.np.service.txn_service.TxnService;
 import org.apache.logging.log4j.LogManager;

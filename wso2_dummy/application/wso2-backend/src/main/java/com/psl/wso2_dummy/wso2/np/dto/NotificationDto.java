@@ -1,7 +1,7 @@
 package com.psl.wso2_dummy.wso2.np.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import psl.np.dataModel.constant.EnumConstant.*;
+import com.psl.wso2_dummy.wso2.np.constant.EnumConstant.*;
 
 import java.io.Serializable;
 

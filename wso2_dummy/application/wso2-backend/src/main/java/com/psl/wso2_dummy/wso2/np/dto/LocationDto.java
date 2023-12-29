@@ -1,7 +1,7 @@
 package com.psl.wso2_dummy.wso2.np.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import psl.np.dataModel.constant.EnumConstant.EventType;
+import com.psl.wso2_dummy.wso2.np.constant.EnumConstant.EventType;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;

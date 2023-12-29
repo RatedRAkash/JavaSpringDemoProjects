@@ -1,6 +1,7 @@
 package com.psl.wso2_dummy.wso2.np.handler;
 
 import com.psl.wso2_dummy.wso2.np.service.location.LocationService;
+import com.psl.wso2_dummy.wso2.np.service.txn_notification.TxnNotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import psl.np.common.error.NpException;
 import com.psl.wso2_dummy.wso2.np.dto.NotificationDto;
@@ -15,11 +16,15 @@ public class HandlerTxnStatement {
     private static final Logger logger = LogManager.getLogger(HandlerTxnStatement.class);
 
     private LocationService locationService;
+    private TxnNotificationService txnNotificationService;
+
 
     @Autowired
-    public HandlerTxnStatement(LocationService locationService) {
+    public HandlerTxnStatement(LocationService locationService, TxnNotificationService txnNotificationService) {
         this.locationService = locationService;
+        this.txnNotificationService = txnNotificationService;
     }
+
 
     @StreamListener(target = TxnTopicProcessor.TXN_TOPIC_INPUT)
     public void handlerLocation(NotificationDto notificationDto) {
@@ -30,7 +35,7 @@ public class HandlerTxnStatement {
         catch (NpException exception){
             logger.info("Calling NP Backend Failed");
 
-            //TODO hala madrid: uncomment printStackTrace
+            // TODO hala madrid: uncomment printStackTrace
 //            exception.printStackTrace();
         }
     }
@@ -39,10 +44,6 @@ public class HandlerTxnStatement {
     @StreamListener(target = TxnTopicProcessor.TXN_TOPIC_INPUT)
     public void handlerTxnNotification(NotificationDto notificationDto) {
         logger.info("HandlerTxnNotification consumed ---> " + notificationDto.getEventType());
-        if(notificationDto.getShouldSendNotification()){
-
-        }else{
-            logger.info("getShouldSendNotification() is ---> " + notificationDto.getShouldSendNotification());
-        }
+        txnNotificationService.processMessageForPublisherNotification(notificationDto);
     }
 }
