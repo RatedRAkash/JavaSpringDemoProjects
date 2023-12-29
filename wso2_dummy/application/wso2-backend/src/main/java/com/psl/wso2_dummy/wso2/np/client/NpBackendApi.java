@@ -9,7 +9,7 @@ import psl.np.common.error.NpServiceCallException;
 import psl.np.common.error.NpTimeOutException;
 import psl.np.common.restClient.ClientHelper;
 import com.psl.wso2_dummy.wso2.np.client.api.NpBackendApiService;
-import psl.np.dataModel.dto.NotificationDto;
+import com.psl.wso2_dummy.wso2.np.dto.NotificationDto;
 import psl.np.dataModel.dto.error.ErrorDto;
 import retrofit2.Response;
 

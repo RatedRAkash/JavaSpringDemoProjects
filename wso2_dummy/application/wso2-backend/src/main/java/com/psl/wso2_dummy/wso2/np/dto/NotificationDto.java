@@ -1,4 +1,4 @@
-package psl.np.dataModel.dto;
+package com.psl.wso2_dummy.wso2.np.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import psl.np.dataModel.constant.EnumConstant.*;
@@ -12,6 +12,10 @@ public class NotificationDto implements Serializable {
     private TransactionType eventSubType;
 
     private EventOriginDto eventOrigin;
+
+    private Boolean shouldSendNotification;
+
+    private Boolean checkOfferOnly;
 
     private LocationDto location;
 
@@ -39,6 +43,22 @@ public class NotificationDto implements Serializable {
         this.eventOrigin = eventOrigin;
     }
 
+    public Boolean getShouldSendNotification() {
+        return shouldSendNotification;
+    }
+
+    public void setShouldSendNotification(Boolean shouldSendNotification) {
+        this.shouldSendNotification = shouldSendNotification;
+    }
+
+    public Boolean getCheckOfferOnly() {
+        return checkOfferOnly;
+    }
+
+    public void setCheckOfferOnly(Boolean checkOfferOnly) {
+        this.checkOfferOnly = checkOfferOnly;
+    }
+
     public LocationDto getLocation() {
         return location;
     }
@@ -53,6 +73,8 @@ public class NotificationDto implements Serializable {
                 "eventType=" + eventType +
                 ", eventSubType=" + eventSubType +
                 ", eventOrigin=" + eventOrigin +
+                ", shouldSendNotification=" + shouldSendNotification +
+                ", checkOfferOnly=" + checkOfferOnly +
                 ", location=" + location +
                 '}';
     }

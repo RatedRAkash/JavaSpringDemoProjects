@@ -3,12 +3,10 @@ package com.psl.wso2_dummy.wso2.np.service.location;
 import com.psl.wso2_dummy.wso2.np.client.NpBackendApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import psl.np.dataModel.dto.NotificationDto;
+import com.psl.wso2_dummy.wso2.np.dto.NotificationDto;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import psl.np.common.error.NpException;
-import psl.np.common.restClient.NpRestClient;
-import com.psl.wso2_dummy.wso2.np.client.api.NpBackendApiService;
 
 @Service
 public class LocationServiceImpl implements LocationService {

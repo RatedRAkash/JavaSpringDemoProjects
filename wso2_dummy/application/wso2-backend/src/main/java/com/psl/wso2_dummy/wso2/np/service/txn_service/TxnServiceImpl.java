@@ -1,6 +1,6 @@
 package com.psl.wso2_dummy.wso2.np.service.txn_service;
 
-import psl.np.dataModel.dto.NotificationDto;
+import com.psl.wso2_dummy.wso2.np.dto.NotificationDto;
 import com.psl.wso2_dummy.wso2.np.publisher.PublisherTxn;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

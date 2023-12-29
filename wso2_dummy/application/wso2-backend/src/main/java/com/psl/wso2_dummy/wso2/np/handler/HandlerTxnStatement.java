@@ -3,7 +3,7 @@ package com.psl.wso2_dummy.wso2.np.handler;
 import com.psl.wso2_dummy.wso2.np.service.location.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import psl.np.common.error.NpException;
-import psl.np.dataModel.dto.NotificationDto;
+import com.psl.wso2_dummy.wso2.np.dto.NotificationDto;
 import com.psl.wso2_dummy.wso2.np.processor.TxnTopicProcessor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -35,8 +35,14 @@ public class HandlerTxnStatement {
         }
     }
 
+
     @StreamListener(target = TxnTopicProcessor.TXN_TOPIC_INPUT)
     public void handlerTxnNotification(NotificationDto notificationDto) {
         logger.info("HandlerTxnNotification consumed ---> " + notificationDto.getEventType());
+        if(notificationDto.getShouldSendNotification()){
+
+        }else{
+            logger.info("getShouldSendNotification() is ---> " + notificationDto.getShouldSendNotification());
+        }
     }
 }

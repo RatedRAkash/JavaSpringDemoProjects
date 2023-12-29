@@ -1,4 +1,4 @@
-package psl.np.dataModel.dto;
+package com.psl.wso2_dummy.wso2.np.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import psl.np.dataModel.constant.EnumConstant.EventType;
