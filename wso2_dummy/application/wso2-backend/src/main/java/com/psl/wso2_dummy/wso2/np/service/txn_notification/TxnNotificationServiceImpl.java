@@ -1,5 +1,7 @@
 package com.psl.wso2_dummy.wso2.np.service.txn_notification;
 
+import com.psl.wso2_dummy.wso2.np.constant.EnumConstant.*;
+import com.psl.wso2_dummy.wso2.np.dto.EventOriginDto;
 import com.psl.wso2_dummy.wso2.np.dto.NotificationDto;
 import com.psl.wso2_dummy.wso2.np.dto.PushTemplateFromattedDto;
 import com.psl.wso2_dummy.wso2.np.entity.PushTemplate;
@@ -10,10 +12,11 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
-public class TxnNotificationServiceImpl implements TxnNotificationService{
+public class TxnNotificationServiceImpl implements TxnNotificationService {
     private static final Logger logger = LogManager.getLogger(TxnNotificationServiceImpl.class);
 
     private PushTemplateRepository pushTemplateRepository;
@@ -28,91 +31,128 @@ public class TxnNotificationServiceImpl implements TxnNotificationService{
     public void processMessageForPublisherNotification(NotificationDto notificationDto) {
         logger.info("processing message to sent to PublisherNotification");
 
-        if(notificationDto.getSendNotification()) {
+        EventOriginDto rootEvent = notificationDto.getEventOrigin();
+        EventType eventType = notificationDto.getEventType();
+        String fromAccount = notificationDto.getEventOrigin().getFromAccount();
+        String toAccount = notificationDto.getEventOrigin().getToAccount();
+        BigDecimal txnAmount = notificationDto.getEventOrigin().getAmount();
+        TransactionType txnType = notificationDto.getEventOrigin().getTxnType();
+        String status = notificationDto.getEventOrigin().getStatus();
+        String MESSAGE = notificationDto.getEventOrigin().getMessage();
+        Boolean shouldSendNotification = notificationDto.getSendNotification();
+        Boolean checkOfferOnly = notificationDto.getCheckOfferOnly();
 
-            String mobileNo = null;
-            String RECHARGE_MOBILE = null;
-            String TITLE = null;
-            String PUSH_BODY = null;
+        if (checkOfferOnly) {
+            logger.info("`checkOfferOnly` is " + checkOfferOnly + " , so dropping message");
+            return;
+        }
 
-            switch (notificationDto.getEventOrigin().getTxnType()) {
-
-                case CASH_IN_FROM_CARD:
-                case CASH_IN_FROM_MFS_WALLET:
-                case CASH_IN_FROM_MFS_AGENT:
-                case CASH_IN_FROM_BANK:
-                case PAYMENT:
-                case SEND_MONEY:
-                case REVERSE_TRANSACTION:
-                case CASH_IN_INITIATION:
-                case IDTP_FUND_TRANSFER:
-                case PROCESS_RTP:
-                    mobileNo = notificationDto.getEventOrigin().getToAccount();
-                    break;
-
-                case CASH_OUT_TO_MFS_WALLET:
-                case CASH_OUT_TO_BANK:
-                case CASH_OUT_TO_MFS_AGENT:
-                case BILL_PAYMENT:
-                case CASH_OUT_INITIATION:
-                case IDTP_PAYMENT:
-                case IDTP_SEND_MONEY:
-                case DECLINE_RTP:
-                    mobileNo = notificationDto.getEventOrigin().getFromAccount();
-                    break;
-
-                case MOBILE_RECHARGE:
-                    mobileNo = notificationDto.getEventOrigin().getFromAccount();
-                    RECHARGE_MOBILE = notificationDto.getEventOrigin().getMobileNo();
-                    break;
-
-                case CASHBACK:
-                    mobileNo = notificationDto.getEventOrigin().getToAccount();
-                    TITLE = notificationDto.getEventOrigin().getOfferMessage().getOfferMsg().getPushTitle();
-                    PUSH_BODY = notificationDto.getEventOrigin().getOfferMessage().getOfferMsg().getPushBody();
-                    break;
-
-                default:
-                    logger.info("Unexpected value: " + notificationDto.getEventOrigin().getTxnType());
+        if (shouldSendNotification != null) {
+            if (!shouldSendNotification) {
+                logger.info("`shouldSendNotification` is " + shouldSendNotification + " , so dropping message");
             }
 
-            List<PushTemplate> pushTemplateList = pushTemplateRepository.wso2messageInfoQuery(notificationDto.getEventOrigin().getTxnType().toString());
+            else {
+                String mobileNo = null;
+                String RECHARGE_MOBILE = null;
+                String TITLE = null;
+                String PUSH_BODY = null;
 
-            String newPayload;
-            String templateTitle;
 
-            switch (notificationDto.getEventOrigin().getTxnType()) {
-                case MOBILE_RECHARGE:
-                    if (pushTemplateList.size() > 0) {
-                        newPayload = WSO2_Utils.processMessageTemplate(pushTemplateList.get(0).getBody(), notificationDto.getEventOrigin().getAmount(), mobileNo, notificationDto.getEventOrigin().getStatus());
-                        logger.info("New Payload: " + newPayload);
+                switch (notificationDto.getEventOrigin().getTxnType()) {
+
+                    case CASH_IN_FROM_CARD:
+                    case CASH_IN_FROM_MFS_WALLET:
+                    case CASH_IN_FROM_MFS_AGENT:
+                    case CASH_IN_FROM_BANK:
+                    case PAYMENT:
+                    case SEND_MONEY:
+                    case REVERSE_TRANSACTION:
+                    case CASH_IN_INITIATION:
+                    case IDTP_FUND_TRANSFER:
+                    case PROCESS_RTP:
+                        mobileNo = toAccount;
+                        break;
+
+                    case CASH_OUT_TO_MFS_WALLET:
+                    case CASH_OUT_TO_BANK:
+                    case CASH_OUT_TO_MFS_AGENT:
+                    case BILL_PAYMENT:
+                    case CASH_OUT_INITIATION:
+                    case IDTP_PAYMENT:
+                    case IDTP_SEND_MONEY:
+                    case DECLINE_RTP:
+                        mobileNo = fromAccount;
+                        break;
+
+                    case MOBILE_RECHARGE:
+                        mobileNo = fromAccount;
+                        RECHARGE_MOBILE = notificationDto.getEventOrigin().getMobileNo();
+                        break;
+
+                    case CASHBACK:
+                        mobileNo = notificationDto.getEventOrigin().getToAccount();
+                        TITLE = notificationDto.getEventOrigin().getOfferMessage().getOfferMsg().getPushTitle();
+                        PUSH_BODY = notificationDto.getEventOrigin().getOfferMessage().getOfferMsg().getPushBody();
+                        break;
+
+                    default:
+                        logger.info("Unexpected value: " + notificationDto.getEventOrigin().getTxnType());
+                        return;
+                }
+
+                //DB Call
+                List<PushTemplate> pushTemplateList = pushTemplateRepository.wso2messageInfoQuery(txnType.toString());
+
+                if (pushTemplateList.size() > 0) {
+
+                    String templateTitle = pushTemplateList.get(0).getTitle();
+                    String msgBodyTemplate = pushTemplateList.get(0).getBody();
+
+                    String newPayload = null;
+
+                    switch (notificationDto.getEventOrigin().getTxnType()) {
+                        case MOBILE_RECHARGE:
+                            newPayload = WSO2_Utils.processMessageTemplate(msgBodyTemplate, txnAmount, RECHARGE_MOBILE, status);
+                            logger.info("MOBILE_RECHARGE New Payload: " + newPayload);
+                            break;
+
+                        case CASHBACK:
+                            templateTitle = TITLE;
+                            newPayload = PUSH_BODY;
+                            logger.info("CASHBACK New Payload: " + newPayload);
+                            break;
+
+                        default:
+                            newPayload = WSO2_Utils.processMessageTemplate(msgBodyTemplate, txnAmount);
+                            logger.info("Default New Payload: " + newPayload);
+                            break;
                     }
 
-                case CASHBACK:
-                    newPayload = PUSH_BODY;
-                    templateTitle = TITLE;
+                    if (notificationDto.getEventOrigin().getStatus().equals("FAILED")) {
+                        newPayload = txnType + " request failed";
+                        logger.info("Txn FAILED New Payload: " + newPayload);
+                    }
 
-                default:
-                    newPayload = WSO2_Utils.processMessageTemplate(pushTemplateList.get(0).getBody(), notificationDto.getEventOrigin().getAmount());
+                    publisherNotification.sendMessageToNotificationTopic(
+                            new PushTemplateFromattedDto(
+                                    eventType,
+                                    mobileNo,
+                                    templateTitle,
+                                    newPayload,
+                                    rootEvent
+                            )
+                    );
+                }
+
+                else {
+                    logger.info("Push template NOT found!");
+                }
             }
-
-            if (notificationDto.getEventOrigin().getStatus().equals("FAILED")) {
-                newPayload = notificationDto.getEventOrigin().getTxnType().toString() + " request failed";
-            }
-
-            publisherNotification.sendMessageToNotificationTopic(
-                    new PushTemplateFromattedDto(
-                            notificationDto.getEventType(),
-                            mobileNo,
-                            TITLE,
-                            PUSH_BODY,
-                            notificationDto.getEventOrigin()
-                    )
-            );
         }
 
         else {
-            logger.info("getShouldSendNotification() is ---> " + notificationDto.getSendNotification());
+            logger.info("Not Sending Notification, because `shouldSendNotification` is ---> " + shouldSendNotification);
         }
     }
 }

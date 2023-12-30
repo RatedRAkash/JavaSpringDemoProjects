@@ -23,7 +23,8 @@ public class PublisherNotification {
 
     public void sendMessageToNotificationTopic(PushTemplateFromattedDto pushTemplateFromattedDto) {
         logger.info("NotificationTopic received ---> " + pushTemplateFromattedDto.toString());
-//        TODO Hala Madrid:
+//        TODO hala Madrid:
 //        notificationTopicProcessor.notification_topic_output().send((message(pushTemplateFromattedDto)));
+        logger.info("Sent Message to Notification Topic");
     }
 }
