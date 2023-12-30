@@ -134,6 +134,7 @@ public class TxnNotificationServiceImpl implements TxnNotificationService {
                         logger.info("Txn FAILED New Payload: " + newPayload);
                     }
 
+                    logger.info("sending via PublisherNotification");
                     publisherNotification.sendMessageToNotificationTopic(
                             new PushTemplateFromattedDto(
                                     eventType,

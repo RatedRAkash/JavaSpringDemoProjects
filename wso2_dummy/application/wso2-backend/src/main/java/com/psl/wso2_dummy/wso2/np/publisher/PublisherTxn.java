@@ -23,7 +23,8 @@ public class PublisherTxn {
     }
 
     public void sendMessageToTxnTopic(NotificationDto notificationDto) {
-        logger.info("TxnTopic received ---> " + notificationDto.toString());
+        logger.info("PublisherTxn publishing ---> " + notificationDto.toString());
         txnTopicProcessor.txn_topic_output().send((message(notificationDto)));
+        logger.info("Sent Message to TxnTopic");
     }
 }

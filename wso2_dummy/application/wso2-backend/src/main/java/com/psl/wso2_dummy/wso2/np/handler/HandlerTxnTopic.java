@@ -12,21 +12,22 @@ import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.StreamListener;
 
 @EnableBinding(TxnTopicProcessor.class)
-public class HandlerTxnStatement {
-    private static final Logger logger = LogManager.getLogger(HandlerTxnStatement.class);
+public class HandlerTxnTopic {
+    private static final Logger logger = LogManager.getLogger(HandlerTxnTopic.class);
 
-    private LocationService locationService;
-    private TxnNotificationService txnNotificationService;
+    private final LocationService locationService;
+    private final TxnNotificationService txnNotificationService;
 
 
     @Autowired
-    public HandlerTxnStatement(LocationService locationService, TxnNotificationService txnNotificationService) {
+    public HandlerTxnTopic(LocationService locationService, TxnNotificationService txnNotificationService) {
         this.locationService = locationService;
         this.txnNotificationService = txnNotificationService;
     }
 
 
-//    TODO hala Madrid: @StreamListener(target = TxnTopicProcessor.TXN_TOPIC_INPUT)
+//    TODO hala Madrid:
+//     @StreamListener(target = TxnTopicProcessor.TXN_TOPIC_INPUT)
     public void handlerLocation(NotificationDto notificationDto) {
         logger.info("HandlerLocation consumed ---> " + notificationDto.getEventType());
         try {

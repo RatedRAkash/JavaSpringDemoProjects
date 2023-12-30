@@ -20,7 +20,7 @@ public class TxnServiceImpl implements TxnService {
 
     @Override
     public void sendMessageToTxnTopic(NotificationDto notificationDto) {
-        logger.info("publisherTxn ---> publishing message: " + notificationDto.getEventType());
+        logger.info("sending via PublisherTxn");
         publisherTxn.sendMessageToTxnTopic(notificationDto);
     }
 }
