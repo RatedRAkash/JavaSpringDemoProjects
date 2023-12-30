@@ -15,11 +15,12 @@ import lombok.NoArgsConstructor;
 public class BookEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String isbn;
 
     private String title;
 
-    // Cascade bolte.. jokon amra kono "BookEntity" object dhore... sheitar vitor er "AuthorEntity" Change korbo...
+    // "CascadeType" bolte.. jokon amra kono "BookEntity" object dhore... sheitar vitor er "AuthorEntity" Change korbo...
     // shei "AuthorEntity" Object auto DATABASE ee Save/Update hobe
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "author_id")

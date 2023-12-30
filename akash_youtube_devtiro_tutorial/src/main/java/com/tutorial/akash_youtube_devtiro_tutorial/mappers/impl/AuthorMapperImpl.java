@@ -1,6 +1,5 @@
 package com.tutorial.akash_youtube_devtiro_tutorial.mappers.impl;
 
-import com.fasterxml.jackson.databind.annotation.JsonAppend;
 import com.tutorial.akash_youtube_devtiro_tutorial.domain.dto.AuthorDto;
 import com.tutorial.akash_youtube_devtiro_tutorial.domain.entities.AuthorEntity;
 import com.tutorial.akash_youtube_devtiro_tutorial.mappers.CustomObjectMapper;
