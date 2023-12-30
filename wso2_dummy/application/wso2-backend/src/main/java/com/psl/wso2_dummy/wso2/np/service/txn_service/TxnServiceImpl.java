@@ -13,7 +13,6 @@ public class TxnServiceImpl implements TxnService {
 
     private PublisherTxn publisherTxn;
 
-
     @Autowired
     public TxnServiceImpl(PublisherTxn publisherTxn) {
         this.publisherTxn = publisherTxn;

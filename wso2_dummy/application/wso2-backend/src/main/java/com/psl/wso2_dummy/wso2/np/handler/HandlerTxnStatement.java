@@ -26,7 +26,7 @@ public class HandlerTxnStatement {
     }
 
 
-    @StreamListener(target = TxnTopicProcessor.TXN_TOPIC_INPUT)
+//    TODO: @StreamListener(target = TxnTopicProcessor.TXN_TOPIC_INPUT)
     public void handlerLocation(NotificationDto notificationDto) {
         logger.info("HandlerLocation consumed ---> " + notificationDto.getEventType());
         try {

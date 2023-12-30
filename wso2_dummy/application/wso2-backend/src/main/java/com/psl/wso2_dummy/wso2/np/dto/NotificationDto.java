@@ -13,7 +13,7 @@ public class NotificationDto implements Serializable {
 
     private EventOriginDto eventOrigin;
 
-    private Boolean shouldSendNotification;
+    private Boolean sendNotification;
 
     private Boolean checkOfferOnly;
 
@@ -43,12 +43,12 @@ public class NotificationDto implements Serializable {
         this.eventOrigin = eventOrigin;
     }
 
-    public Boolean getShouldSendNotification() {
-        return shouldSendNotification;
+    public Boolean getSendNotification() {
+        return sendNotification;
     }
 
-    public void setShouldSendNotification(Boolean shouldSendNotification) {
-        this.shouldSendNotification = shouldSendNotification;
+    public void setSendNotification(Boolean sendNotification) {
+        this.sendNotification = sendNotification;
     }
 
     public Boolean getCheckOfferOnly() {
@@ -73,7 +73,7 @@ public class NotificationDto implements Serializable {
                 "eventType=" + eventType +
                 ", eventSubType=" + eventSubType +
                 ", eventOrigin=" + eventOrigin +
-                ", shouldSendNotification=" + shouldSendNotification +
+                ", sendNotification=" + sendNotification +
                 ", checkOfferOnly=" + checkOfferOnly +
                 ", location=" + location +
                 '}';

@@ -25,6 +25,7 @@ spring:
 #                  enabled: true
 #                receive-timeout: 5000
       bindings:
+#   -----------TXN TOPIC-----------
         TXN_TOPIC_INPUT:
           destination: txn_topic_exchange
           group: txn_topic
@@ -37,6 +38,19 @@ spring:
         TXN_TOPIC_OUTPUT:
           destination: txn_topic_exchange
           binder: local_rabbit
+
+
+#   -----------NOTIFICATION TOPIC-----------
+        NOTIFICATION_TOPIC_INPUT:
+          destination: notification_topic_exchange
+          group: notification_topic
+          binder: local_rabbit
+
+        NOTIFICATION_TOPIC_OUTPUT:
+          destination: notification_topic_exchange
+          binder: local_rabbit
+
+
 #      rabbit:
 #        bindings:
 #          TXN_TOPIC_OUTPUT:
