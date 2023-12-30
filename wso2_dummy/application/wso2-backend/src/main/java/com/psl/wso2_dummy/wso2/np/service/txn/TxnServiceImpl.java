@@ -1,4 +1,4 @@
-package com.psl.wso2_dummy.wso2.np.service.txn_service;
+package com.psl.wso2_dummy.wso2.np.service.txn;
 
 import com.psl.wso2_dummy.wso2.np.dto.NotificationDto;
 import com.psl.wso2_dummy.wso2.np.publisher.PublisherTxn;

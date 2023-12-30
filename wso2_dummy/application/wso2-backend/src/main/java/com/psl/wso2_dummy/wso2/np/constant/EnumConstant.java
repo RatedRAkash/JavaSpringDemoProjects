@@ -36,6 +36,8 @@ public class EnumConstant {
         PROCESS_RTP,
         CASH_OUT_TO_MFS_AGENT,
         CASH_OUT_INITIATION,
-        DECLINE_RTP
+        DECLINE_RTP,
+        IDTP_RTP_SEND_MONEY,
+        IDTP_RTP_PAYMENT
     }
 }

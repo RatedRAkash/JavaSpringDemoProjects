@@ -10,6 +10,7 @@ import com.psl.wso2_dummy.wso2.np.repository.PushTemplateRepository;
 import com.psl.wso2_dummy.wso2.np.util.WSO2_Utils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -22,6 +23,7 @@ public class TxnNotificationServiceImpl implements TxnNotificationService {
     private PushTemplateRepository pushTemplateRepository;
     private PublisherNotification publisherNotification;
 
+    @Autowired
     public TxnNotificationServiceImpl(PushTemplateRepository pushTemplateRepository, PublisherNotification publisherNotification) {
         this.pushTemplateRepository = pushTemplateRepository;
         this.publisherNotification = publisherNotification;
@@ -59,7 +61,7 @@ public class TxnNotificationServiceImpl implements TxnNotificationService {
                 String PUSH_BODY = null;
 
 
-                switch (notificationDto.getEventOrigin().getTxnType()) {
+                switch (txnType) {
 
                     case CASH_IN_FROM_CARD:
                     case CASH_IN_FROM_MFS_WALLET:
@@ -97,7 +99,7 @@ public class TxnNotificationServiceImpl implements TxnNotificationService {
                         break;
 
                     default:
-                        logger.info("Unexpected value: " + notificationDto.getEventOrigin().getTxnType());
+                        logger.info("Unexpected value: " + txnType);
                         return;
                 }
 
@@ -111,7 +113,7 @@ public class TxnNotificationServiceImpl implements TxnNotificationService {
 
                     String newPayload = null;
 
-                    switch (notificationDto.getEventOrigin().getTxnType()) {
+                    switch (txnType) {
                         case MOBILE_RECHARGE:
                             newPayload = WSO2_Utils.processMessageTemplate(msgBodyTemplate, txnAmount, RECHARGE_MOBILE, status);
                             logger.info("MOBILE_RECHARGE New Payload: " + newPayload);

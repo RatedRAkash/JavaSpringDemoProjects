@@ -14,4 +14,7 @@ public interface PushTemplateRepository extends JpaRepository<PushTemplate, Long
 
     @Query(value = "SELECT p FROM PushTemplate p WHERE p.active = true AND p.errorCode = :error_code")
     List<PushTemplate> wso2messageInfoByCodeQuery(@Param("error_code") Integer error_code);
+
+    //TODO GetSmsTemplate er ($.data.senderSms), ($.data.recieverSms) ========================
+
 }

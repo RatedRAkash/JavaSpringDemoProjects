@@ -31,7 +31,6 @@ public class SmsTemplate implements Serializable {
     @Column(name = "error_code")
     private Integer errorCode;
 
-
     public SmsTemplate() {
 
     }
