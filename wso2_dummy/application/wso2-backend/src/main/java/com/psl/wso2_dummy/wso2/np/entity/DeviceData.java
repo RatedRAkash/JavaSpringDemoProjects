@@ -23,6 +23,7 @@ public class DeviceData implements Serializable {
     @Column(name = "fcm_token", length = 200)
     private String fcmToken;
 
+    @Column(name="event_time")
     private Date timestamp;
 
     @Column(name = "user_id", length = 100, nullable = false)

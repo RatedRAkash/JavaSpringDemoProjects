@@ -1,5 +1,6 @@
 package com.psl.wso2_dummy.wso2.np.repository;
 
+import com.psl.wso2_dummy.wso2.np.dto.entity_projection.DeviceDataProjection;
 import com.psl.wso2_dummy.wso2.np.entity.DeviceData;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -9,8 +10,10 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface DeviceDataRepository extends JpaRepository<DeviceData, Long> {
-    @Query(value = "SELECT p FROM DeviceData p WHERE p.userId = :user_id")
-    List<DeviceData> fcmSearchQuery(@Param("user_id") String user_id);
+
+    @Query("SELECT NEW com.psl.wso2_dummy.wso2.np.dto.entity_projection.DeviceDataProjection(p.fcmToken) " +
+            "FROM DeviceData p WHERE p.userId = :user_id")
+    List<DeviceDataProjection> fcmSearchQuery(@Param("user_id") String user_id);
 
 
     @Modifying

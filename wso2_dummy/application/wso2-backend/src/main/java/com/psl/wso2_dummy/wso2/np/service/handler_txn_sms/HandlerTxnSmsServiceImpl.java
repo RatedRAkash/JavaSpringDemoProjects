@@ -1,6 +1,7 @@
 package com.psl.wso2_dummy.wso2.np.service.handler_txn_sms;
 
 import com.psl.wso2_dummy.wso2.np.constant.EnumConstant.*;
+import com.psl.wso2_dummy.wso2.np.dto.entity_projection.SmsTemplateProjection;
 import com.psl.wso2_dummy.wso2.np.dto.formatted_dto.PushTemplateFormattedDto;
 import com.psl.wso2_dummy.wso2.np.entity.SmsTemplate;
 import com.psl.wso2_dummy.wso2.np.repository.SmsTemplateRepository;
@@ -30,11 +31,11 @@ public class HandlerTxnSmsServiceImpl implements HandlerTxnSmsService {
         TransactionType uri_var_TXN_TYPE = pushTemplateFormattedDto.getEventOrigin().getTxnType();
         EventType EVENT = pushTemplateFormattedDto.getEventType();
 
-        List<SmsTemplate> smsTemplateList = smsTemplateRepository.smsTemplateQuery(uri_var_TXN_TYPE.toString());
+        List<SmsTemplateProjection> smsTemplateList = smsTemplateRepository.smsTemplateQuery(uri_var_TXN_TYPE.toString());
 
         //TODO GetSmsTemplate er ($.data.senderSms), ($.data.recieverSms) ========================
 
-        if(smsTemplateList.size() > 0){
+        if(!smsTemplateList.isEmpty()){
             String FROM_BODY = smsTemplateList.get(0).getFromBody();
             String TO_BODY = smsTemplateList.get(0).getToBody();
 

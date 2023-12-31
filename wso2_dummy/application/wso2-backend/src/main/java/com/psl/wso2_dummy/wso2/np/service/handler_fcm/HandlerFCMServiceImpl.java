@@ -1,5 +1,6 @@
 package com.psl.wso2_dummy.wso2.np.service.handler_fcm;
 
+import com.psl.wso2_dummy.wso2.np.dto.entity_projection.DeviceDataProjection;
 import com.psl.wso2_dummy.wso2.np.dto.formatted_dto.PushTemplateFormattedDto;
 import com.psl.wso2_dummy.wso2.np.dto.response.FCMResponseDto;
 import com.psl.wso2_dummy.wso2.np.entity.DeviceData;
@@ -34,7 +35,7 @@ public class HandlerFCMServiceImpl implements HandlerFCMService {
         String uri_var_mobileNo = pushTemplateFormattedDto.getMobileNo();
         PushTemplateFormattedDto inputJson = pushTemplateFormattedDto;
 
-        List<DeviceData> deviceDataList = deviceDataRepository.fcmSearchQuery(uri_var_mobileNo);
+        List<DeviceDataProjection> deviceDataList = deviceDataRepository.fcmSearchQuery(uri_var_mobileNo);
 
         if (deviceDataList.size() > 0) {
             logger.info("Received FCM Token for Mobile: " + uri_var_mobileNo);

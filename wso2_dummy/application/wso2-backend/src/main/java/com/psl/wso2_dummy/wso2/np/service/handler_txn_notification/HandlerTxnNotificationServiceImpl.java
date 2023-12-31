@@ -3,6 +3,7 @@ package com.psl.wso2_dummy.wso2.np.service.handler_txn_notification;
 import com.psl.wso2_dummy.wso2.np.constant.EnumConstant.*;
 import com.psl.wso2_dummy.wso2.np.dto.EventOriginDto;
 import com.psl.wso2_dummy.wso2.np.dto.NotificationDto;
+import com.psl.wso2_dummy.wso2.np.dto.entity_projection.PushTemplateProjection;
 import com.psl.wso2_dummy.wso2.np.dto.formatted_dto.PushTemplateFormattedDto;
 import com.psl.wso2_dummy.wso2.np.entity.PushTemplate;
 import com.psl.wso2_dummy.wso2.np.repository.PushTemplateRepository;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class HandlerTxnNotificationServiceImpl implements HandlerTxnNotificationService {
@@ -104,7 +106,7 @@ public class HandlerTxnNotificationServiceImpl implements HandlerTxnNotification
                 }
 
                 //DB Call
-                List<PushTemplate> pushTemplateList = pushTemplateRepository.wso2messageInfoQuery(txnType.toString());
+                List<PushTemplateProjection> pushTemplateList = pushTemplateRepository.wso2messageInfoQuery(txnType.toString());
 
                 if (pushTemplateList.size() > 0) {
 
