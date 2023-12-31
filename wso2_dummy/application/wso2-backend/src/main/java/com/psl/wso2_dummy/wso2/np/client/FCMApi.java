@@ -1,15 +1,15 @@
 package com.psl.wso2_dummy.wso2.np.client;
 
+import com.psl.wso2_dummy.wso2.np.client.api.FCMApiService;
+import com.psl.wso2_dummy.wso2.np.dto.formatted_dto.PushTemplateFormattedDto;
+import com.psl.wso2_dummy.wso2.np.dto.response.FCMResponseDto;
 import org.apache.logging.log4j.LogManager;
-import org.springframework.stereotype.Component;
-
 import org.apache.logging.log4j.Logger;
+import org.springframework.stereotype.Component;
 import psl.np.common.error.NpException;
 import psl.np.common.error.NpServiceCallException;
 import psl.np.common.error.NpTimeOutException;
 import psl.np.common.restClient.ClientHelper;
-import com.psl.wso2_dummy.wso2.np.client.api.NpBackendApiService;
-import com.psl.wso2_dummy.wso2.np.dto.NotificationDto;
 import psl.np.dataModel.dto.error.ErrorDto;
 import retrofit2.Response;
 
@@ -20,24 +20,23 @@ import static psl.np.common.utils.NpUtils.deserializeErrorDto;
 import static psl.np.common.utils.NpUtils.processBaseUrl;
 
 @Component
-public class NpBackendApi {
-    private static final Logger logger = LogManager.getLogger(NpBackendApi.class);
+public class FCMApi {
+    private static final Logger logger = LogManager.getLogger(FCMApi.class);
 
-    private final NpBackendApiService npBackendApiService;
+    private final FCMApiService fcmApiService;
 
-    public NpBackendApi() {
+    public FCMApi() {
         //TODO hala madrid: Change BASEURL+Response DataType
-        this.npBackendApiService = ClientHelper.buildClient(NpBackendApiService.class,
-                processBaseUrl("http://localhost:8080/nobopay-backend/"), 200);
+        this.fcmApiService = ClientHelper.buildClient(FCMApiService.class,
+                processBaseUrl("https://fcm.googleapis.com/"), 200);
     }
 
-
-    public Void postLocationDataToNpBackend(NotificationDto notificationDto)
+    public FCMResponseDto sendMessageToFCM(PushTemplateFormattedDto pushTemplateFormattedDto, String fcmToken)
             throws NpException {
-        Response<Void> response = null;
+        Response<FCMResponseDto> response = null;
         try {
-            logger.info("Calling npBackendApiService service for: saveLocationData()");
-            response = this.npBackendApiService.saveLocationData(notificationDto).execute();
+            logger.info("Calling fcmApiService service for: sendMessage()");
+            response = this.fcmApiService.sendMessage(pushTemplateFormattedDto, fcmToken).execute();
         } catch (SocketTimeoutException ex) {
             logger.error("Calling service timeout", ex);
             throw new NpTimeOutException();
@@ -45,7 +44,7 @@ public class NpBackendApi {
             logger.error("Unable to call Service", ex);
             throw new NpServiceCallException();
         }
-        logger.info("NpBackendApiService Api response: " + response.code());
+        logger.info("FCMApiService Api response: " + response.code());
         if (!response.isSuccessful()) {
             ErrorDto errorDto;
             try {
@@ -58,6 +57,5 @@ public class NpBackendApi {
         }
         return response.body();
     }
-
 
 }

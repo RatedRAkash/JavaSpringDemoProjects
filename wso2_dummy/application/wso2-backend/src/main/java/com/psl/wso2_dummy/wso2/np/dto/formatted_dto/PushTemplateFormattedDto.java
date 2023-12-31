@@ -1,7 +1,8 @@
-package com.psl.wso2_dummy.wso2.np.dto;
+package com.psl.wso2_dummy.wso2.np.dto.formatted_dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.psl.wso2_dummy.wso2.np.constant.EnumConstant;
+import com.psl.wso2_dummy.wso2.np.dto.EventOriginDto;
 
 import java.io.Serializable;
 

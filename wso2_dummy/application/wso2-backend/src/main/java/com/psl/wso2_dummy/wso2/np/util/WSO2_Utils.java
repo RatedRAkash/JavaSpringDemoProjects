@@ -11,7 +11,6 @@ public class WSO2_Utils {
                 .build();
     }
 
-
     /*
     Message Body Format
     Tk. $ has been received in your NoboPay wallet. with Mobile No: #, status is: %

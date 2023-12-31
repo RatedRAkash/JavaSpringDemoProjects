@@ -3,7 +3,7 @@ package com.psl.wso2_dummy.wso2.np.service.handler_txn_notification;
 import com.psl.wso2_dummy.wso2.np.constant.EnumConstant.*;
 import com.psl.wso2_dummy.wso2.np.dto.EventOriginDto;
 import com.psl.wso2_dummy.wso2.np.dto.NotificationDto;
-import com.psl.wso2_dummy.wso2.np.dto.PushTemplateFormattedDto;
+import com.psl.wso2_dummy.wso2.np.dto.formatted_dto.PushTemplateFormattedDto;
 import com.psl.wso2_dummy.wso2.np.entity.PushTemplate;
 import com.psl.wso2_dummy.wso2.np.repository.PushTemplateRepository;
 import com.psl.wso2_dummy.wso2.np.service.publisher_notification.PublisherNotificationService;

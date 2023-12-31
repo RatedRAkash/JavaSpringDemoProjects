@@ -1,6 +1,6 @@
 package com.psl.wso2_dummy.wso2.np.publisher;
 
-import com.psl.wso2_dummy.wso2.np.dto.PushTemplateFormattedDto;
+import com.psl.wso2_dummy.wso2.np.dto.formatted_dto.PushTemplateFormattedDto;
 import com.psl.wso2_dummy.wso2.np.processor.NotificationTopicProcessor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

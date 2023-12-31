@@ -1,7 +1,7 @@
 package com.psl.wso2_dummy.wso2.np.service.handler_txn_sms;
 
 import com.psl.wso2_dummy.wso2.np.constant.EnumConstant.*;
-import com.psl.wso2_dummy.wso2.np.dto.PushTemplateFormattedDto;
+import com.psl.wso2_dummy.wso2.np.dto.formatted_dto.PushTemplateFormattedDto;
 import com.psl.wso2_dummy.wso2.np.entity.SmsTemplate;
 import com.psl.wso2_dummy.wso2.np.repository.SmsTemplateRepository;
 import org.apache.logging.log4j.LogManager;
@@ -40,6 +40,8 @@ public class HandlerTxnSmsServiceImpl implements HandlerTxnSmsService {
 
             switch (uri_var_TXN_TYPE) {
                 case BILL_PAYMENT:
+                    //TODO hala madrid:
+                    //TODO TimeFormatter <class name="com.progoti.nobopay.TimeFormatter"/>========================
                     break;
 
                 case CASH_IN_FROM_BANK:
