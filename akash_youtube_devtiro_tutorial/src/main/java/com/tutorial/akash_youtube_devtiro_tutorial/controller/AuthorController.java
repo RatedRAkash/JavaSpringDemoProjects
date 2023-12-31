@@ -1,9 +1,9 @@
-package com.tutorial.akash_youtube_devtiro_tutorial.controllers;
+package com.tutorial.akash_youtube_devtiro_tutorial.controller;
 
 import com.tutorial.akash_youtube_devtiro_tutorial.domain.dto.AuthorDto;
-import com.tutorial.akash_youtube_devtiro_tutorial.domain.entities.AuthorEntity;
-import com.tutorial.akash_youtube_devtiro_tutorial.mappers.CustomObjectMapper;
-import com.tutorial.akash_youtube_devtiro_tutorial.services.AuthorService;
+import com.tutorial.akash_youtube_devtiro_tutorial.domain.entity.AuthorEntity;
+import com.tutorial.akash_youtube_devtiro_tutorial.mapper.CustomObjectMapper;
+import com.tutorial.akash_youtube_devtiro_tutorial.service.AuthorService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

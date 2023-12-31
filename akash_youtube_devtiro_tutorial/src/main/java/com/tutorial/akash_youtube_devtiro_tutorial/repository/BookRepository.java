@@ -1,6 +1,6 @@
-package com.tutorial.akash_youtube_devtiro_tutorial.repositories;
+package com.tutorial.akash_youtube_devtiro_tutorial.repository;
 
-import com.tutorial.akash_youtube_devtiro_tutorial.domain.entities.BookEntity;
+import com.tutorial.akash_youtube_devtiro_tutorial.domain.entity.BookEntity;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

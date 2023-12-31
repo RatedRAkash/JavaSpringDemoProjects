@@ -1,4 +1,4 @@
-package com.tutorial.akash_youtube_devtiro_tutorial.domain.entities.one_to_one;
+package com.tutorial.akash_youtube_devtiro_tutorial.domain.entity.one_to_one;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

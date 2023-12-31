@@ -1,4 +1,4 @@
-package com.tutorial.akash_youtube_devtiro_tutorial.domain;
+package com.tutorial.akash_youtube_devtiro_tutorial.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;

@@ -1,6 +1,6 @@
 package com.tutorial.akash_youtube_devtiro_tutorial;
 
-import com.tutorial.akash_youtube_devtiro_tutorial.domain.FootballPlayer;
+import com.tutorial.akash_youtube_devtiro_tutorial.domain.entity.FootballPlayer;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 

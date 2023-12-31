@@ -1,8 +1,8 @@
-package com.tutorial.akash_youtube_devtiro_tutorial.services.impl;
+package com.tutorial.akash_youtube_devtiro_tutorial.service.impl;
 
-import com.tutorial.akash_youtube_devtiro_tutorial.domain.entities.AuthorEntity;
-import com.tutorial.akash_youtube_devtiro_tutorial.repositories.AuthorRepository;
-import com.tutorial.akash_youtube_devtiro_tutorial.services.AuthorService;
+import com.tutorial.akash_youtube_devtiro_tutorial.domain.entity.AuthorEntity;
+import com.tutorial.akash_youtube_devtiro_tutorial.repository.AuthorRepository;
+import com.tutorial.akash_youtube_devtiro_tutorial.service.AuthorService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

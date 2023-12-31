@@ -1,4 +1,4 @@
-package com.tutorial.akash_youtube_devtiro_tutorial.domain.entities;
+package com.tutorial.akash_youtube_devtiro_tutorial.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -16,6 +16,8 @@ public class BookEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String isbn;
 
     private String title;
@@ -23,6 +25,6 @@ public class BookEntity {
     // "CascadeType" bolte.. jokon amra kono "BookEntity" object dhore... sheitar vitor er "AuthorEntity" Change korbo...
     // shei "AuthorEntity" Object auto DATABASE ee Save/Update hobe
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "author_id")
+    @JoinColumn(name = "fk_author_id")
     private AuthorEntity authorEntity;
 }

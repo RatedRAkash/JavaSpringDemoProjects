@@ -1,8 +1,8 @@
-package com.tutorial.akash_youtube_devtiro_tutorial.mappers.impl;
+package com.tutorial.akash_youtube_devtiro_tutorial.mapper.impl;
 
 import com.tutorial.akash_youtube_devtiro_tutorial.domain.dto.AuthorDto;
-import com.tutorial.akash_youtube_devtiro_tutorial.domain.entities.AuthorEntity;
-import com.tutorial.akash_youtube_devtiro_tutorial.mappers.CustomObjectMapper;
+import com.tutorial.akash_youtube_devtiro_tutorial.domain.entity.AuthorEntity;
+import com.tutorial.akash_youtube_devtiro_tutorial.mapper.CustomObjectMapper;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

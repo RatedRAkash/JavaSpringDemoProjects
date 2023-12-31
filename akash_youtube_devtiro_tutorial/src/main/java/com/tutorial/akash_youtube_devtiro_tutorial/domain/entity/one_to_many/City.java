@@ -1,6 +1,5 @@
-package com.tutorial.akash_youtube_devtiro_tutorial.domain.entities.one_to_many;
+package com.tutorial.akash_youtube_devtiro_tutorial.domain.entity.one_to_many;
 
-import com.tutorial.akash_youtube_devtiro_tutorial.domain.entities.one_to_one.Student;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

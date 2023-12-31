@@ -1,4 +1,4 @@
-package com.tutorial.akash_youtube_devtiro_tutorial.mappers;
+package com.tutorial.akash_youtube_devtiro_tutorial.mapper;
 
 public interface CustomObjectMapper<A,B> {
 
