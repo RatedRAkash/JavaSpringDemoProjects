@@ -1,9 +1,9 @@
-package com.psl.wso2_dummy.wso2.np.service.location;
+package com.psl.wso2_dummy.wso2.np.service.handler_location;
 
 import com.psl.wso2_dummy.wso2.np.dto.NotificationDto;
 import psl.np.common.error.NpException;
 
-public interface LocationService {
+public interface HandlerLocationService {
 
     void postLocationDataToNpBackend(NotificationDto notificationDto) throws NpException;
 }

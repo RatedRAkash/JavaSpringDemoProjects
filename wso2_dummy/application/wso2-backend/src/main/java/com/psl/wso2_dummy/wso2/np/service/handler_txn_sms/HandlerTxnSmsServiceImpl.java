@@ -1,7 +1,7 @@
-package com.psl.wso2_dummy.wso2.np.service.txn_sms;
+package com.psl.wso2_dummy.wso2.np.service.handler_txn_sms;
 
 import com.psl.wso2_dummy.wso2.np.constant.EnumConstant.*;
-import com.psl.wso2_dummy.wso2.np.dto.PushTemplateFromattedDto;
+import com.psl.wso2_dummy.wso2.np.dto.PushTemplateFormattedDto;
 import com.psl.wso2_dummy.wso2.np.entity.SmsTemplate;
 import com.psl.wso2_dummy.wso2.np.repository.SmsTemplateRepository;
 import org.apache.logging.log4j.LogManager;
@@ -13,22 +13,22 @@ import java.util.List;
 
 
 @Service
-public class TxnSmsServiceImpl implements TxnSmsService {
-    private static final Logger logger = LogManager.getLogger(TxnSmsServiceImpl.class);
+public class HandlerTxnSmsServiceImpl implements HandlerTxnSmsService {
+    private static final Logger logger = LogManager.getLogger(HandlerTxnSmsServiceImpl.class);
 
     private SmsTemplateRepository smsTemplateRepository;
 
     @Autowired
-    public TxnSmsServiceImpl(SmsTemplateRepository smsTemplateRepository) {
+    public HandlerTxnSmsServiceImpl(SmsTemplateRepository smsTemplateRepository) {
         this.smsTemplateRepository = smsTemplateRepository;
     }
 
     @Override
-    public void processMessageForSenderSms(PushTemplateFromattedDto pushTemplateFromattedDto) {
-        logger.info("Processing Message for SenderSms: " + pushTemplateFromattedDto.toString());
+    public void processMessageForSenderSms(PushTemplateFormattedDto pushTemplateFormattedDto) {
+        logger.info("Processing Message for SenderSms: " + pushTemplateFormattedDto.toString());
 
-        TransactionType uri_var_TXN_TYPE = pushTemplateFromattedDto.getEventOrigin().getTxnType();
-        EventType EVENT = pushTemplateFromattedDto.getEventType();
+        TransactionType uri_var_TXN_TYPE = pushTemplateFormattedDto.getEventOrigin().getTxnType();
+        EventType EVENT = pushTemplateFormattedDto.getEventType();
 
         List<SmsTemplate> smsTemplateList = smsTemplateRepository.smsTemplateQuery(uri_var_TXN_TYPE.toString());
 

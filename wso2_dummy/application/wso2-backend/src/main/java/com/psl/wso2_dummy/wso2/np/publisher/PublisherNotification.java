@@ -1,6 +1,6 @@
 package com.psl.wso2_dummy.wso2.np.publisher;
 
-import com.psl.wso2_dummy.wso2.np.dto.PushTemplateFromattedDto;
+import com.psl.wso2_dummy.wso2.np.dto.PushTemplateFormattedDto;
 import com.psl.wso2_dummy.wso2.np.processor.NotificationTopicProcessor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -22,9 +22,9 @@ public class PublisherNotification {
     }
 
 
-    public void sendMessageToNotificationTopic(PushTemplateFromattedDto pushTemplateFromattedDto) {
-        logger.info("PublisherNotification publishing ---> " + pushTemplateFromattedDto.toString());
-        notificationTopicProcessor.notification_topic_output().send((message(pushTemplateFromattedDto)));
+    public void publishMessageToNotificationTopic(PushTemplateFormattedDto pushTemplateFormattedDto) {
+        logger.info("PublisherNotification publishing ---> " + pushTemplateFormattedDto.toString());
+        notificationTopicProcessor.notification_topic_output().send((message(pushTemplateFormattedDto)));
         logger.info("Sent Message to NotificationTopic");
     }
 }

@@ -1,12 +1,12 @@
-package com.psl.wso2_dummy.wso2.np.service.txn_notification;
+package com.psl.wso2_dummy.wso2.np.service.handler_txn_notification;
 
 import com.psl.wso2_dummy.wso2.np.constant.EnumConstant.*;
 import com.psl.wso2_dummy.wso2.np.dto.EventOriginDto;
 import com.psl.wso2_dummy.wso2.np.dto.NotificationDto;
-import com.psl.wso2_dummy.wso2.np.dto.PushTemplateFromattedDto;
+import com.psl.wso2_dummy.wso2.np.dto.PushTemplateFormattedDto;
 import com.psl.wso2_dummy.wso2.np.entity.PushTemplate;
-import com.psl.wso2_dummy.wso2.np.publisher.PublisherNotification;
 import com.psl.wso2_dummy.wso2.np.repository.PushTemplateRepository;
+import com.psl.wso2_dummy.wso2.np.service.publisher_notification.PublisherNotificationService;
 import com.psl.wso2_dummy.wso2.np.util.WSO2_Utils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -17,16 +17,16 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @Service
-public class TxnNotificationServiceImpl implements TxnNotificationService {
-    private static final Logger logger = LogManager.getLogger(TxnNotificationServiceImpl.class);
+public class HandlerTxnNotificationServiceImpl implements HandlerTxnNotificationService {
+    private static final Logger logger = LogManager.getLogger(HandlerTxnNotificationServiceImpl.class);
 
     private PushTemplateRepository pushTemplateRepository;
-    private PublisherNotification publisherNotification;
+    private PublisherNotificationService publisherNotificationService;
 
     @Autowired
-    public TxnNotificationServiceImpl(PushTemplateRepository pushTemplateRepository, PublisherNotification publisherNotification) {
+    public HandlerTxnNotificationServiceImpl(PushTemplateRepository pushTemplateRepository, PublisherNotificationService publisherNotificationService) {
         this.pushTemplateRepository = pushTemplateRepository;
-        this.publisherNotification = publisherNotification;
+        this.publisherNotificationService = publisherNotificationService;
     }
 
     @Override
@@ -137,8 +137,8 @@ public class TxnNotificationServiceImpl implements TxnNotificationService {
                     }
 
                     logger.info("sending via PublisherNotification");
-                    publisherNotification.sendMessageToNotificationTopic(
-                            new PushTemplateFromattedDto(
+                    publisherNotificationService.sendMessageToNotificationTopic(
+                            new PushTemplateFormattedDto(
                                     eventType,
                                     mobileNo,
                                     templateTitle,

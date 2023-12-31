@@ -6,18 +6,18 @@ import com.psl.wso2_dummy.wso2.np.constant.EnumConstant;
 import java.io.Serializable;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class PushTemplateFromattedDto implements Serializable {
+public class PushTemplateFormattedDto implements Serializable {
     private EnumConstant.EventType eventType;
     private String mobileNo;
     private String title;
     private String body;
     private EventOriginDto eventOrigin;
 
-    public PushTemplateFromattedDto() {
+    public PushTemplateFormattedDto() {
 
     }
 
-    public PushTemplateFromattedDto(EnumConstant.EventType eventType, String mobileNo, String title, String body, EventOriginDto eventOrigin) {
+    public PushTemplateFormattedDto(EnumConstant.EventType eventType, String mobileNo, String title, String body, EventOriginDto eventOrigin) {
         this.eventType = eventType;
         this.mobileNo = mobileNo;
         this.title = title;

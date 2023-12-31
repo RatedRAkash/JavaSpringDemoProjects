@@ -1,4 +1,4 @@
-package com.psl.wso2_dummy.wso2.np.service.txn;
+package com.psl.wso2_dummy.wso2.np.service.publisher_txn;
 
 import com.psl.wso2_dummy.wso2.np.dto.NotificationDto;
 import com.psl.wso2_dummy.wso2.np.publisher.PublisherTxn;
@@ -8,19 +8,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class TxnServiceImpl implements TxnService {
-    private static final Logger logger = LogManager.getLogger(TxnServiceImpl.class);
+public class PublisherTxnServiceImpl implements PublisherTxnService {
+    private static final Logger logger = LogManager.getLogger(PublisherTxnServiceImpl.class);
 
     private PublisherTxn publisherTxn;
 
     @Autowired
-    public TxnServiceImpl(PublisherTxn publisherTxn) {
+    public PublisherTxnServiceImpl(PublisherTxn publisherTxn) {
         this.publisherTxn = publisherTxn;
     }
 
     @Override
     public void sendMessageToTxnTopic(NotificationDto notificationDto) {
         logger.info("sending via PublisherTxn");
-        publisherTxn.sendMessageToTxnTopic(notificationDto);
+        publisherTxn.publishMessageToTxnTopic(notificationDto);
     }
 }

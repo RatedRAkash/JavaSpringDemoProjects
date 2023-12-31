@@ -1,4 +1,4 @@
-package com.psl.wso2_dummy.wso2.np.service.location;
+package com.psl.wso2_dummy.wso2.np.service.handler_location;
 
 import com.psl.wso2_dummy.wso2.np.client.NpBackendApi;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,13 +9,13 @@ import org.apache.logging.log4j.Logger;
 import psl.np.common.error.NpException;
 
 @Service
-public class LocationServiceImpl implements LocationService {
-    public static final Logger logger = LogManager.getLogger(LocationServiceImpl.class);
+public class HandlerLocationServiceImpl implements HandlerLocationService {
+    public static final Logger logger = LogManager.getLogger(HandlerLocationServiceImpl.class);
 
     private final NpBackendApi npBackendApi;
 
     @Autowired
-    public LocationServiceImpl(NpBackendApi npBackendApi) {
+    public HandlerLocationServiceImpl(NpBackendApi npBackendApi) {
         this.npBackendApi = npBackendApi;
     }
 
@@ -23,8 +23,6 @@ public class LocationServiceImpl implements LocationService {
     public void postLocationDataToNpBackend(NotificationDto notificationDto) throws NpException {
 
         logger.info("NP-Backend called for saving Location Data");
-        System.out.println(Thread.currentThread().getName());
-
         this.npBackendApi.postLocationDataToNpBackend(notificationDto);
     }
 }
