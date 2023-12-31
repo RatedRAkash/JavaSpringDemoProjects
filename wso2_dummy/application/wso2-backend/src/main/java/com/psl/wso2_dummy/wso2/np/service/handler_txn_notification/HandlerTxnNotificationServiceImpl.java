@@ -136,7 +136,7 @@ public class HandlerTxnNotificationServiceImpl implements HandlerTxnNotification
                         logger.info("Txn FAILED New Payload: " + newPayload);
                     }
 
-                    logger.info("sending via PublisherNotification");
+                    logger.info("calling PublisherNotificationService");
                     publisherNotificationService.sendMessageToNotificationTopic(
                             new PushTemplateFormattedDto(
                                     eventType,

@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface DeviceDataRepository extends JpaRepository<DeviceData, Long> {
-    @Query(value = "SELECT p FROM DeviceData p WHERE p.userId = :type")
+    @Query(value = "SELECT p FROM DeviceData p WHERE p.userId = :user_id")
     List<DeviceData> fcmSearchQuery(@Param("user_id") String user_id);
 
 
