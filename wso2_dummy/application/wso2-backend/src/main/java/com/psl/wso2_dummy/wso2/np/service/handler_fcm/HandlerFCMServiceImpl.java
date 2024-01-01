@@ -46,7 +46,7 @@ public class HandlerFCMServiceImpl implements HandlerFCMService {
                 logger.info("FCM Token ---> Success: " + fcmResponseDto.getSuccess() + ", Failure:" + fcmResponseDto.getFailure());
             }
             catch (NpException e) {
-                logger.info("Error Sending FCM Data");
+                logger.info("Error Calling Google FCM Server");
                 e.printStackTrace();
             }
 

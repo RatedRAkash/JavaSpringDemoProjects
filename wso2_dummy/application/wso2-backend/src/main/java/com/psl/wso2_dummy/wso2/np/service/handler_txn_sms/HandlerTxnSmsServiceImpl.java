@@ -3,25 +3,23 @@ package com.psl.wso2_dummy.wso2.np.service.handler_txn_sms;
 import com.psl.wso2_dummy.wso2.np.constant.EnumConstant.*;
 import com.psl.wso2_dummy.wso2.np.dto.entity_projection.SmsTemplateProjection;
 import com.psl.wso2_dummy.wso2.np.dto.formatted_dto.PushTemplateFormattedDto;
-import com.psl.wso2_dummy.wso2.np.entity.SmsTemplate;
-import com.psl.wso2_dummy.wso2.np.repository.SmsTemplateRepository;
+import com.psl.wso2_dummy.wso2.np.service.get_sms_template.GetSmsTemplateService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
+import java.math.BigDecimal;
 
 @Service
 public class HandlerTxnSmsServiceImpl implements HandlerTxnSmsService {
     private static final Logger logger = LogManager.getLogger(HandlerTxnSmsServiceImpl.class);
 
-    private SmsTemplateRepository smsTemplateRepository;
+    private GetSmsTemplateService getSmsTemplateService;
 
     @Autowired
-    public HandlerTxnSmsServiceImpl(SmsTemplateRepository smsTemplateRepository) {
-        this.smsTemplateRepository = smsTemplateRepository;
+    public HandlerTxnSmsServiceImpl(GetSmsTemplateService getSmsTemplateService) {
+        this.getSmsTemplateService = getSmsTemplateService;
     }
 
     @Override
@@ -30,19 +28,26 @@ public class HandlerTxnSmsServiceImpl implements HandlerTxnSmsService {
 
         TransactionType uri_var_TXN_TYPE = pushTemplateFormattedDto.getEventOrigin().getTxnType();
         EventType EVENT = pushTemplateFormattedDto.getEventType();
+        if(EVENT.equals(EventType.TRANSACTION)){
+            logger.info("EventType is: " + EVENT);
+        }
+        else{
+            logger.info("EventType is: " + EVENT);
+            return; //NON_TXN sms will Not Get Sms
+        }
 
-        List<SmsTemplateProjection> smsTemplateList = smsTemplateRepository.smsTemplateQuery(uri_var_TXN_TYPE.toString());
+        SmsTemplateProjection smsTemplateProjection = getSmsTemplateService.getSmsTemplateQuery(uri_var_TXN_TYPE.toString());
 
-        //TODO GetSmsTemplate er ($.data.senderSms), ($.data.recieverSms) ========================
-
-        if(!smsTemplateList.isEmpty()){
-            String FROM_BODY = smsTemplateList.get(0).getFromBody();
-            String TO_BODY = smsTemplateList.get(0).getToBody();
+        if (smsTemplateProjection != null) {
+            String FROM_BODY = smsTemplateProjection.getFromBody();
+            String TO_BODY = smsTemplateProjection.getToBody();
 
             switch (uri_var_TXN_TYPE) {
                 case BILL_PAYMENT:
                     //TODO hala madrid:
                     //TODO TimeFormatter <class name="com.progoti.nobopay.TimeFormatter"/>========================
+                    BigDecimal AMOUNT = pushTemplateFormattedDto.getEventOrigin().getAmount();
+
                     break;
 
                 case CASH_IN_FROM_BANK:
@@ -79,6 +84,9 @@ public class HandlerTxnSmsServiceImpl implements HandlerTxnSmsService {
                 default:
                     break;
             }
+        }
+        else{
+            logger.info("No SmsTemplateProjection found for: " + uri_var_TXN_TYPE.toString());
         }
     }
 }

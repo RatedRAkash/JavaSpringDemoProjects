@@ -5,7 +5,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
 
 @Data
 @AllArgsConstructor
@@ -16,7 +15,7 @@ public class SmsTemplateProjection {
 
     private String toBody;
 
-    private boolean fromSms;
+    private Boolean senderSms;
 
-    private boolean toSms;
+    private Boolean recieverSms;
 }

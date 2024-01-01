@@ -8,8 +8,8 @@ spring:
             spring:
               rabbitmq:
 #                host: 10.10.15.107
-                host: 192.168.0.172
-#                host: localhost
+#                host: 192.168.0.172
+                host: localhost
                 port: 5672
                 username: guest
                 password: guest
