@@ -5,7 +5,6 @@ import com.psl.wso2_dummy.wso2.np.dto.EventOriginDto;
 import com.psl.wso2_dummy.wso2.np.dto.NotificationDto;
 import com.psl.wso2_dummy.wso2.np.dto.entity_projection.PushTemplateProjection;
 import com.psl.wso2_dummy.wso2.np.dto.formatted_dto.PushTemplateFormattedDto;
-import com.psl.wso2_dummy.wso2.np.entity.PushTemplate;
 import com.psl.wso2_dummy.wso2.np.repository.PushTemplateRepository;
 import com.psl.wso2_dummy.wso2.np.service.publisher_notification.PublisherNotificationService;
 import com.psl.wso2_dummy.wso2.np.util.WSO2_Utils;
@@ -117,7 +116,7 @@ public class HandlerTxnNotificationServiceImpl implements HandlerTxnNotification
 
                     switch (txnType) {
                         case MOBILE_RECHARGE:
-                            newPayload = WSO2_Utils.processMessageTemplate(msgBodyTemplate, txnAmount, RECHARGE_MOBILE, status);
+                            newPayload = UtilHandlerTxnNotification.processMessageTemplate(msgBodyTemplate, txnAmount, RECHARGE_MOBILE, status);
                             logger.info("MOBILE_RECHARGE New Payload: " + newPayload);
                             break;
 
@@ -128,7 +127,7 @@ public class HandlerTxnNotificationServiceImpl implements HandlerTxnNotification
                             break;
 
                         default:
-                            newPayload = WSO2_Utils.processMessageTemplate(msgBodyTemplate, txnAmount);
+                            newPayload = UtilHandlerTxnNotification.processMessageTemplate(msgBodyTemplate, txnAmount);
                             logger.info("Default New Payload: " + newPayload);
                             break;
                     }

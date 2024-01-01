@@ -10,26 +10,19 @@ import java.math.BigDecimal;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class EventOriginDto implements Serializable {
     private String txnId;
-
     private String fromAccount;
     private String toAccount;
-
     private TransactionType txnType;
-
+    private String txnTime;
     private BigDecimal amount;
-
-    private String accountNo;
+    private String accountNumber;
     private String mobileNo;
     private String referenceId;
-
     private String status;
-
     private String message;
-
     private String bank;
-
+    private String bankSwiftCode;
     private OfferMessageDto offerMessage;
-
 
     public String getTxnId() {
         return txnId;
@@ -63,6 +56,14 @@ public class EventOriginDto implements Serializable {
         this.txnType = txnType;
     }
 
+    public String getTxnTime() {
+        return txnTime;
+    }
+
+    public void setTxnTime(String txnTime) {
+        this.txnTime = txnTime;
+    }
+
     public BigDecimal getAmount() {
         return amount;
     }
@@ -71,12 +72,12 @@ public class EventOriginDto implements Serializable {
         this.amount = amount;
     }
 
-    public String getAccountNo() {
-        return accountNo;
+    public String getAccountNumber() {
+        return accountNumber;
     }
 
-    public void setAccountNo(String accountNo) {
-        this.accountNo = accountNo;
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
     }
 
     public String getMobileNo() {
@@ -119,6 +120,14 @@ public class EventOriginDto implements Serializable {
         this.bank = bank;
     }
 
+    public String getBankSwiftCode() {
+        return bankSwiftCode;
+    }
+
+    public void setBankSwiftCode(String bankSwiftCode) {
+        this.bankSwiftCode = bankSwiftCode;
+    }
+
     public OfferMessageDto getOfferMessage() {
         return offerMessage;
     }
@@ -129,18 +138,20 @@ public class EventOriginDto implements Serializable {
 
     @Override
     public String toString() {
-        return "EventOriginDto {" +
+        return "EventOriginDto{" +
                 "txnId='" + txnId + '\'' +
                 ", fromAccount='" + fromAccount + '\'' +
                 ", toAccount='" + toAccount + '\'' +
                 ", txnType=" + txnType +
+                ", txnTime='" + txnTime + '\'' +
                 ", amount=" + amount +
-                ", accountNo='" + accountNo + '\'' +
+                ", accountNumber='" + accountNumber + '\'' +
                 ", mobileNo='" + mobileNo + '\'' +
                 ", referenceId='" + referenceId + '\'' +
                 ", status='" + status + '\'' +
                 ", message='" + message + '\'' +
                 ", bank='" + bank + '\'' +
+                ", bankSwiftCode='" + bankSwiftCode + '\'' +
                 ", offerMessage=" + offerMessage +
                 '}';
     }

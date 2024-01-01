@@ -1,6 +1,5 @@
 package com.psl.wso2_dummy.wso2.np.util;
 
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -18,7 +17,7 @@ public class TimeFormatter {
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ISO_OFFSET_DATE_TIME;
 
 
-    public static String mediate(String inputTime) {
+    public static String formatDate(String inputTime) {
         String dateOutput;
         try {
             LocalDateTime localDateTime = LocalDateTime.parse(inputTime, FORMATTER);

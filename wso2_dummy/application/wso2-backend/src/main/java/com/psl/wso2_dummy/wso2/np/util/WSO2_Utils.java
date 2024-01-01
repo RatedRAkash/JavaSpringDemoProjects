@@ -10,24 +10,4 @@ public class WSO2_Utils {
         return MessageBuilder.withPayload(val)
                 .build();
     }
-
-    /*
-    Message Body Format
-    Tk. $ has been received in your NoboPay wallet. with Mobile No: #, status is: %
-     */
-    public static String processMessageTemplate(String template, BigDecimal amount, String mobile, String status) {
-
-        String formattedAmount = String.format("%.2f", amount);
-
-        return template.replace("$", formattedAmount)
-                .replace("#", mobile)
-                .replace("%", status.toLowerCase());
-    }
-
-    public static String processMessageTemplate(String template, BigDecimal amount) {
-
-        String formattedAmount = String.format("%.2f", amount);
-
-        return template.replace("$", formattedAmount);
-    }
 }
