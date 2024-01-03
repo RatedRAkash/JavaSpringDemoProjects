@@ -63,9 +63,10 @@ spring:
           destination: psl_demo
           group: queue13
           consumer:
-            auto-bind-dlq: true
-            republishToDlq: true
-            maxAttempts: 5
+            concurrency: 4 # Concurrency works During CREATION Of Exchange, So if Exchange with SAME name already Exists Delete it
+#            auto-bind-dlq: true
+#            republishToDlq: true
+#            maxAttempts: 5
           binder: local_rabbit
         TXN_TOPIC_OUTPUT:
           destination: psl_demo
