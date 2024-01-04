@@ -58,16 +58,29 @@ spring:
           destination: exchange-ramos2
           binder: local_rabbit
 
+
+
+# just DESTINATION same rekhe… Group Name Change korlei Multiple Consumer pabo
+# arr CONCURRENCY huilo 1 ta Consumer er moddei MULTIPLE THREAD create hobe… but Consumer 1 tai
+
+
         # WSO2 topic
-        TXN_TOPIC_INPUT:
+        TXN_TOPIC_INPUT1:
           destination: psl_demo
-          group: queue13
+          group: queue1
           consumer:
             concurrency: 4 # Concurrency works During CREATION Of Exchange, So if Exchange with SAME name already Exists Delete it
 #            auto-bind-dlq: true
 #            republishToDlq: true
 #            maxAttempts: 5
           binder: local_rabbit
+
+        TXN_TOPIC_INPUT2:
+          destination: psl_demo
+          group: queue2
+          binder: local_rabbit
+
+        #---OUTPUT---
         TXN_TOPIC_OUTPUT:
           destination: psl_demo
           binder: local_rabbit

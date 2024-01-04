@@ -8,12 +8,12 @@ import org.springframework.cloud.stream.annotation.StreamListener;
 @EnableBinding(TxnTopicProcessor.class)
 public class HandlerTxnStatement {
 
-    @StreamListener(target = TxnTopicProcessor.TXN_TOPIC_INPUT)
+    @StreamListener(target = TxnTopicProcessor.TXN_TOPIC_INPUT1)
     public void consumer1(TxnType txnType) {
         System.out.println("Consumer1 SEND_MONEY handled: " + txnType.toString());
     }
 
-    @StreamListener(target = TxnTopicProcessor.TXN_TOPIC_INPUT)
+    @StreamListener(target = TxnTopicProcessor.TXN_TOPIC_INPUT2)
     public void consumer2(TxnType txnType) {
         System.out.println("Consumer2 RECHARGE handled: " + txnType.toString());
     }
