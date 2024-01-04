@@ -129,4 +129,14 @@ public class NpUtils {
         }
         return baseUrl;
     }
+
+    public static String extractBaseUrl(String fullUrl) {
+        int endIndex = fullUrl.indexOf("/", fullUrl.indexOf("//") + 2);
+        return processBaseUrl(endIndex != -1 ? fullUrl.substring(0, endIndex) : fullUrl);
+    }
+
+    public static String extractPath(String fullUrl) {
+        int startIndex = fullUrl.indexOf("/", fullUrl.indexOf("//") + 2);
+        return startIndex != -1 ? fullUrl.substring(startIndex) : "/";
+    }
 }

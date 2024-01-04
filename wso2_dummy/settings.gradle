@@ -1,4 +1,4 @@
-rootProject.name = 'wso2_dummy'
+rootProject.name = 'tallypay_notification'
 
 //include modules
 include('modules:nobopay-data-model')
