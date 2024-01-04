@@ -1,8 +1,0 @@
-rootProject.name = 'tallypay_notification'
-
-//include modules
-include('modules:nobopay-data-model')
-include('modules:common')
-
-//include application
-include('application:wso2-backend')
