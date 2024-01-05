@@ -5,6 +5,7 @@ import com.tutorial.akash_retrofit_client_spring_boot.RestClientAdvanceMechanism
 import okhttp3.Interceptor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.stereotype.Component;
 import retrofit2.Call;
 import retrofit2.Response;
 
@@ -15,6 +16,7 @@ import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
+@Component //made RMAResClient a SINGLETON Class, So, that New Bean Object Doesn't have to be Created
 public class RMARestClient<TService, TDto> {
     //TODO:
     // *** TService --> jeita ApiService Class Call dibo taar Name ***
