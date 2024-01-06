@@ -4,8 +4,11 @@ import com.tutorial.akash_spring_boot_jdbc_tutorial.domain.Author;
 import com.tutorial.akash_spring_boot_jdbc_tutorial.domain.Book;
 import com.tutorial.akash_spring_boot_jdbc_tutorial.repository_dao.author_dao.AuthorDaoImpl;
 import com.tutorial.akash_spring_boot_jdbc_tutorial.repository_dao.book_dao.BookDaoImpl;
+import com.tutorial.akash_spring_boot_jdbc_tutorial.row_mapper.AuthorRowMapper;
+import com.tutorial.akash_spring_boot_jdbc_tutorial.row_mapper.BookRowMapper;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -40,6 +43,17 @@ public class BookDaoImplTests {
                 eq("6392-102-103"),
                 eq("The Greatest Defender of All Time"),
                 eq(1L)
+        );
+    }
+
+    @Test
+    public void testThatFindOneBookByAndGeneratesCorrectSql() {
+        bookDaoImplUnderTest.findOneById("6392-102-103");
+
+        verify(jdbcTemplate).query(
+                eq("SELECT isbn, title, author_id FROM books WHERE isbn = ? LIMIT 1"),
+                ArgumentMatchers.<BookRowMapper>any(),
+                eq("6392-102-103")
         );
     }
 }
