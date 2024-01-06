@@ -1,8 +1,9 @@
-package com.tutorial.akash_spring_boot_jdbc_tutorial.dao;
+package com.tutorial.akash_spring_boot_jdbc_tutorial.unit_test;
 
 import com.tutorial.akash_spring_boot_jdbc_tutorial.domain.Author;
 import com.tutorial.akash_spring_boot_jdbc_tutorial.repository_dao.author_dao.AuthorDaoImpl;
 import com.tutorial.akash_spring_boot_jdbc_tutorial.row_mapper.AuthorRowMapper;
+import com.tutorial.akash_spring_boot_jdbc_tutorial.util.TestDataUtil;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentMatchers;
@@ -15,7 +16,7 @@ import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
-public class AuhorDaoImplTests {
+public class AuhorDaoImplTest {
 
     @Mock
     private JdbcTemplate jdbcTemplate;
@@ -26,11 +27,7 @@ public class AuhorDaoImplTests {
 
     @Test
     public void testCreateAuthorGeneratesCorrectSql(){
-        Author author = Author.builder()
-                .id(1L)
-                .name("Sergio Ramos")
-                .age(34)
-                .build();
+        Author author = TestDataUtil.createTestAuthor();
 
         authorDaoImplUnderTest.create(author);
 

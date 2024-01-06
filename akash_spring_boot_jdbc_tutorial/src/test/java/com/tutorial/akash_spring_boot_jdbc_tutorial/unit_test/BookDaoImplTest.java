@@ -1,11 +1,9 @@
-package com.tutorial.akash_spring_boot_jdbc_tutorial.dao;
+package com.tutorial.akash_spring_boot_jdbc_tutorial.unit_test;
 
-import com.tutorial.akash_spring_boot_jdbc_tutorial.domain.Author;
 import com.tutorial.akash_spring_boot_jdbc_tutorial.domain.Book;
-import com.tutorial.akash_spring_boot_jdbc_tutorial.repository_dao.author_dao.AuthorDaoImpl;
 import com.tutorial.akash_spring_boot_jdbc_tutorial.repository_dao.book_dao.BookDaoImpl;
-import com.tutorial.akash_spring_boot_jdbc_tutorial.row_mapper.AuthorRowMapper;
 import com.tutorial.akash_spring_boot_jdbc_tutorial.row_mapper.BookRowMapper;
+import com.tutorial.akash_spring_boot_jdbc_tutorial.util.TestDataUtil;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentMatchers;
@@ -18,7 +16,7 @@ import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
-public class BookDaoImplTests {
+public class BookDaoImplTest {
 
     @Mock
     private JdbcTemplate jdbcTemplate;
@@ -29,11 +27,7 @@ public class BookDaoImplTests {
 
     @Test
     public void testCreateBookGeneratesCorrectSql() {
-        Book book = Book.builder()
-                .isbn("6392-102-103")
-                .title("The Greatest Defender of All Time")
-                .authorId(1L)
-                .build();
+        Book book = TestDataUtil.createTestBook();
 
         bookDaoImplUnderTest.create(book);
 
@@ -48,7 +42,7 @@ public class BookDaoImplTests {
 
     @Test
     public void testThatFindOneBookByAndGeneratesCorrectSql() {
-        bookDaoImplUnderTest.findOneById("6392-102-103");
+        bookDaoImplUnderTest.findOneByIsbn("6392-102-103");
 
         verify(jdbcTemplate).query(
                 eq("SELECT isbn, title, author_id FROM books WHERE isbn = ? LIMIT 1"),
