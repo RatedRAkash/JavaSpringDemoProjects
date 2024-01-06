@@ -1,6 +1,5 @@
 package com.tutorial.akash_spring_boot_jdbc_tutorial.integration_test;
 
-
 import com.tutorial.akash_spring_boot_jdbc_tutorial.domain.Author;
 import com.tutorial.akash_spring_boot_jdbc_tutorial.repository_dao.author_dao.AuthorDaoImpl;
 import com.tutorial.akash_spring_boot_jdbc_tutorial.util.TestDataUtil;

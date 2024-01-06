@@ -1,4 +1,4 @@
-package MultiThread;
+package MultiThread.NormalCustomThread;
 
 public class CustomRunnable implements Runnable{
 
