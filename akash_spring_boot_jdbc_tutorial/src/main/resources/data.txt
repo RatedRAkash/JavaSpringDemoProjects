@@ -1,0 +1,3 @@
+-- INSERT INTO widgets (id, name, purpose) VALUES
+-- (1, 'Widget Doraemon', 'he is a Rackoon'),
+-- (2, 'Widget Nobita', 'He is dependant upon Doraemon');
