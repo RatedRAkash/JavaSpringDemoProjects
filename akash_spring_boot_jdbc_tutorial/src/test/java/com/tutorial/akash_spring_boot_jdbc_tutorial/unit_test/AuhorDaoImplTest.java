@@ -27,7 +27,7 @@ public class AuhorDaoImplTest {
 
     @Test
     public void testCreateAuthorGeneratesCorrectSql(){
-        Author author = TestDataUtil.createTestAuthor();
+        Author author = TestDataUtil.createTestAuthorA();
 
         authorDaoImplUnderTest.create(author);
 

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -30,14 +31,69 @@ public class BookDaoImplIntegrationTest {
     
     @Test
     public void testThatBookCanBeCreatedAndRecalled() {
-        Author author = TestDataUtil.createTestAuthor();
+        Author author = TestDataUtil.createTestAuthorA();
         authorDao.create(author); //as FOREIGN_KEY constraint so, agge Author Create kore Database ee INSERT korte hobe, naile bari khabe
 
-        Book book = TestDataUtil.createTestBook();
+        Book book = TestDataUtil.createTestBookA();
         book.setAuthorId(author.getId());
         bookDaoImplUnderTest.create(book);
         Optional<Book> result = bookDaoImplUnderTest.findOneByIsbn(book.getIsbn());
         assertThat(result).isPresent();
         assertThat(result.get()).isEqualTo(book);
+    }
+
+    @Test
+    public void testThatMultipleBooksCanBeCreatedAndRecalled() {
+        Author author = TestDataUtil.createTestAuthorA();
+        authorDao.create(author);
+
+        Book bookA = TestDataUtil.createTestBookA();
+        bookA.setAuthorId(author.getId());
+        bookDaoImplUnderTest.create(bookA);
+
+        Book bookB = TestDataUtil.createTestBookB();
+        bookB.setAuthorId(author.getId());
+        bookDaoImplUnderTest.create(bookB);
+
+        Book bookC = TestDataUtil.createTestBookC();
+        bookC.setAuthorId(author.getId());
+        bookDaoImplUnderTest.create(bookC);
+
+        List<Book> result = bookDaoImplUnderTest.findAll();
+        assertThat(result)
+                .hasSize(3)
+                .containsExactly(bookA, bookB, bookC);
+    }
+
+    @Test
+    public void testThatBookCanBeUpdated() {
+        Author author = TestDataUtil.createTestAuthorA();
+        authorDao.create(author);
+
+        Book bookA = TestDataUtil.createTestBookA();
+        bookA.setAuthorId(author.getId());
+        bookDaoImplUnderTest.create(bookA);
+
+        bookA.setTitle("UPDATED");
+        bookDaoImplUnderTest.update(bookA.getIsbn(), bookA);
+
+        Optional<Book> result = bookDaoImplUnderTest.findOneByIsbn(bookA.getIsbn());
+        assertThat(result).isPresent();
+        assertThat(result.get()).isEqualTo(bookA);
+    }
+
+    @Test
+    public void testThatBookCanBeDeleted() {
+        Author author = TestDataUtil.createTestAuthorA();
+        authorDao.create(author);
+
+        Book bookA = TestDataUtil.createTestBookA();
+        bookA.setAuthorId(author.getId());
+        bookDaoImplUnderTest.create(bookA);
+
+        bookDaoImplUnderTest.delete(bookA.getIsbn());
+
+        Optional<Book> result = bookDaoImplUnderTest.findOneByIsbn(bookA.getIsbn());
+        assertThat(result).isEmpty();
     }
 }
