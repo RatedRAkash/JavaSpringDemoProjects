@@ -28,14 +28,20 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6:3.1.1.RELEASE'
-	compileOnly 'org.projectlombok:lombok'
-	runtimeOnly 'org.postgresql:postgresql'
-	annotationProcessor 'org.projectlombok:lombok'
+
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
 
-	//Retrofit Dependencies
+	//Lombok Dependency
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	//Postgres Dependency
+	runtimeOnly 'org.postgresql:postgresql'
+
+
+	//Retrofit Dependency
 	implementation 'com.squareup.retrofit2:retrofit:2.4.0'
 	implementation 'com.squareup.retrofit2:converter-jackson:2.4.0'
 	implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
@@ -43,6 +49,9 @@ dependencies {
 	implementation 'com.squareup.okhttp3:logging-interceptor' //for Logging okHttp Request
 
 	implementation 'com.google.guava:guava:29.0-jre'
+
+	//Firebase FCM Dependency
+	implementation 'com.google.firebase:firebase-admin:9.1.1'
 }
 
 tasks.named('test') {
