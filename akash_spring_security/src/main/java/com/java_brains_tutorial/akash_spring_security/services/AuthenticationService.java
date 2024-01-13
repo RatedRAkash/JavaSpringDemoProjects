@@ -7,14 +7,13 @@ import com.java_brains_tutorial.akash_spring_security.dto.RegisterRequest;
 import com.java_brains_tutorial.akash_spring_security.models.User;
 import com.java_brains_tutorial.akash_spring_security.repositories.UserRepository;
 import com.java_brains_tutorial.akash_spring_security.roles.CustomUserRole;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor
 public class AuthenticationService {
     private final JwtUtilService jwtUtilService;
 
@@ -23,6 +22,14 @@ public class AuthenticationService {
     private final PasswordEncoder passwordEncoder;
 
     private final AuthenticationManager authenticationManager;
+
+    @Autowired
+    public AuthenticationService(JwtUtilService jwtUtilService, UserRepository repository, PasswordEncoder passwordEncoder, AuthenticationManager authenticationManager) {
+        this.jwtUtilService = jwtUtilService;
+        this.repository = repository;
+        this.passwordEncoder = passwordEncoder;
+        this.authenticationManager = authenticationManager;
+    }
 
     public AuthenticationResponse register(RegisterRequest request){
         var user = User.builder()

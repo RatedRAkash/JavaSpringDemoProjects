@@ -1,7 +1,7 @@
 package com.java_brains_tutorial.akash_spring_security.config;
 
 import com.java_brains_tutorial.akash_spring_security.repositories.UserRepository;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -15,10 +15,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
-@RequiredArgsConstructor
 public class CustomApplicationConfig {
-
     private final UserRepository userRepository;
+
+    @Autowired
+    public CustomApplicationConfig(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Bean
     public UserDetailsService userDetailsService(){
