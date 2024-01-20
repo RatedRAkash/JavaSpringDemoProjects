@@ -1,0 +1,35 @@
+spring:
+  cloud:
+    function:
+      definition: myProducer; toUpperCase; myConsumer
+    stream:
+      poller:
+        fixed-delay: 1500
+      function:
+        bindings:
+          myProducer-out-0: myProducer-custom-name-output-0
+
+      bindings:
+        myProducer-custom-name-output-0:
+          destination: ramos-data-producer-exchange
+          group: jersey_4
+
+        toUpperCase-in-0:
+          destination: ramos-data-producer-exchange
+        toUpperCase-out-0:
+          destination: ramos-data-consumer-exchange
+
+        myConsumer-in-0:
+          destination: ramos-data-consumer-exchange
+
+      binders:
+        local_rabbit:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                host: 192.168.0.172
+                port: 5672
+                username: guest
+                password: guest
+                virtual-host: /
