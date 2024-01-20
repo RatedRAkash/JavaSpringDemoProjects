@@ -14,30 +14,4 @@ public class AkashLatestSpringCloudStreamApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(AkashLatestSpringCloudStreamApplication.class, args);
 	}
-
-
-	//Producer
-	@Bean
-	public Supplier<String> myProducer() {
-		return () -> "sergio ramos";
-	}
-
-
-	//Processor
-	@Bean
-	public Function<String, String> toUpperCase() {
-		return (str) -> {
-			str = str.toUpperCase();
-			return str;
-		};
-	}
-
-	
-	//Consumer
-	@Bean
-	public Consumer<String> myConsumer() {
-		return (str) -> {
-			System.out.println(str);
-		};
-	}
 }
