@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class MapperConfig {
+public class ModelMapperConfig {
 
 //    ekta Entity theke Java Class er Dto te convert korar jonno ei ModelMapper er Instance amra Use korbo
     @Bean

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class AuthorMapperImpl implements CustomObjectMapper<AuthorEntity, AuthorDto> {
 
-//    AutoWired hobe ---> "MapperConfig" class ee @Bean hisave Declare kora ase "ModelMapper" ke
+//    AutoWired hobe ---> "ModelMapperConfig" class ee @Bean hisave Declare kora ase "ModelMapper" ke
     private ModelMapper modelMapper;
 
     @Autowired

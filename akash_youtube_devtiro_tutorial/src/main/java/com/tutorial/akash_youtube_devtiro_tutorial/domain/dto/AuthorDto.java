@@ -12,8 +12,8 @@ import lombok.NoArgsConstructor;
 public class AuthorDto {
 
     //TODO: Controller Only "AuthorDto" Response hisave Dibe & Request hisave Nibe...
-    // Controller(Presentaion Layer) Should have No Idea about AuthorEntity... ei karon DTO(Data Transfer Object) use kora huise AuthorEntity theke AuthorDto te nite
-    // Persistence Layer(Repository) & Service Layer should access AuthorEntity
+    // Controller(Presentaion Layer) Should have No Idea about "AuthorEntity"... ei karon DTO(Data Transfer Object) use kora huise "AuthorEntity" theke "AuthorDto" te nite
+    // Persistence Layer(Repository) & Service Layer should access "AuthorEntity"
 
     private Long id;
 
