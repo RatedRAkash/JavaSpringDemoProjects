@@ -3,10 +3,18 @@ package DesignPattern.CompositePattern;
 public class Main {
 
     public static void main(String[] args) {
-        Composite box = new Composite();
-        box.add(new Leaf1());
-        box.add(new Leaf2());
+        // 1 ta BigBox er moddhe ekadik Leaf Nodes & 1 ta SmallBox oo rakhte parbo...
+        // Because, BigBox, SmallBox & LeafNode all are ---> "Component" Class
+        Composite bigBox = new Composite();
+        bigBox.add(new Leaf1());
+        bigBox.add(new Leaf2());
 
-        System.out.printf("Price: " + box.getPrice());
+        Composite smallBox = new Composite();
+        smallBox.add(new Leaf1());
+
+        //smallBox raklam BigBox er moddhe
+        bigBox.add(smallBox);
+
+        System.out.printf("Price: " + bigBox.getPrice());
     }
 }

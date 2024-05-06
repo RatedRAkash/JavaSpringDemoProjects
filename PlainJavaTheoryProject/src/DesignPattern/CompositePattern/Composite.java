@@ -1,7 +1,7 @@
 package DesignPattern.CompositePattern;
 
 import java.util.ArrayList;
-public class Composite implements Component{
+public class Composite implements Component {
 
     ArrayList<Component> arrayList = new ArrayList<>();
 
