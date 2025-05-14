@@ -1,0 +1,31 @@
+package CoreConcept.SameObjectBasedOnName;
+
+import java.util.Objects;
+
+public class Person {
+    private String name;
+
+    public Person(String name) {
+        this.name = name;
+    }
+
+    // Getter
+    public String getName() {
+        return name;
+    }
+
+    // Override equals() to compare based on 'name'
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true; // same reference
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return Objects.equals(name, person.name);
+    }
+
+    // Override hashCode() to match equals()
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
+    }
+}
