@@ -1,8 +1,9 @@
-package CoreConcept.SameObjectBasedOnName;
+package CoreConcept.SameObjectBasedOnNameAndCustomSorting;
 
 import java.util.Objects;
 
-public class Person {
+// it Must implement "Comparable" to do Custom Sorting while doing "Collections.sort(list);"
+public class Person implements Comparable<Person>{
     private String name;
 
     public Person(String name) {
@@ -21,6 +22,12 @@ public class Person {
         if (o == null || getClass() != o.getClass()) return false;
         Person person = (Person) o;
         return Objects.equals(name, person.name);
+    }
+
+    // it Must implement "Comparable" to do Custom Sorting while doing "Collections.sort(list);"
+    @Override
+    public int compareTo(Person other) {
+        return this.name.compareTo(other.name);  // Sort by name
     }
 
     // Override hashCode() to match equals()

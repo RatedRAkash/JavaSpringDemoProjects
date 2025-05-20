@@ -1,4 +1,4 @@
-package CoreConcept.SameObjectBasedOnName;
+package CoreConcept.SameObjectBasedOnNameAndCustomSorting;
 
 import java.util.HashSet;
 import java.util.Set;
