@@ -46,7 +46,9 @@ public class MyLinkedList {
                 break;
             }
 
-            prev = prev.next;
+            // we can Do this or, "prev = current"
+//            prev = prev.next;
+            prev = current;
             current = current.next;
         }
 
