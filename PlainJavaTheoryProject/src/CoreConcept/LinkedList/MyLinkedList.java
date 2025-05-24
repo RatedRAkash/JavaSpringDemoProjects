@@ -55,15 +55,38 @@ public class MyLinkedList {
         return dummy.next;
     }
 
+    ListNode reverseLinkedList(ListNode root) {
+        ListNode current = root;
+        ListNode prev = null;
+
+        while(current!=null){
+            ListNode nextNode = current.next;
+            current.next = prev;
+            prev = current;
+            current = nextNode;
+        }
+
+        // as "current" is pointing to "null"... that means, "prev" is Pointing to the Last Node, so we return that
+        return prev;
+    }
+
+
     void printLinkedList() {
-        System.out.println("Linked List:");
+        System.out.print("Linked List:   ");
         if (root != null) {
             ListNode current = root;
             while (current != null) {
-                System.out.println(current.val);
+                System.out.print(current.val);
                 current = current.next;
+
+                // for Last Element we are Not Printing the "->"
+                if(current!=null){
+                    System.out.print("->");
+                }
             }
         }
+
+        System.out.println();
     }
 }
 
@@ -78,6 +101,9 @@ class Main{
         list.printLinkedList();
 
         list.root = list.deleteNode(58);
+        list.printLinkedList();
+
+        list.root = list.reverseLinkedList(list.root);
         list.printLinkedList();
     }
 }
